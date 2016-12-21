@@ -1,0 +1,26 @@
+<!doctype html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8" />
+        <title>Phaser Example - Frame Test</title>
+        <script type="text/javascript" src="phaser-sdk/phaser_v2.6.2.js"></script>
+        <script type="text/javascript" src="phaser-sdk/phaser-debug.js"></script>
+        <style type="text/css">
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var WIDTH = {{width}};
+            var HEIGHT = {{height}};
+            var drawCount = {{drawCount}};
+
+            var AUTO_PLAY_TIME_OFFSET = {{autoPlayTimeOffset}}; // 5000 ms -> 5 sec.
+            var AUTO_PLAY_INCR_ANIM_COUNT = {{autoPlayIncrAnimCount}};
+            var AUTO_PLAY_STOP_COUNT = {{autoPlayStopCount}};
+        </script>
+        <script type="text/javascript" src="frame-test/multiple anims.js?v={{datetime}}"></script>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko"> <!--manifest="kanghanbyul.appcache"-->
+    <head>
+        <meta charset="utf-8">
+        <title>슬랙 생성기 - OneStar</title>
+        <style>
+            body {
+                font-family: 10pt "맑은 고딕", sans-serif;
+            }
+            #inputs {
+                position: relative;
+            }
+            #gen, .hidden {
+                display: none;
+            }
+            textarea {
+                background-color: rgba(255, 255, 255, 0.5);
+                font-family: inherit;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>슬랙 생성기 - OneStar</h1>
+        <p>
+            &lt;canvas&gt; 지원: <span id="support-canvas"></span>
+        </p>
+
+        <div id="inputs">
+            <img id="bg" src="assets/slack_kanghanbyul.jpg">
+            <textarea style="position: absolute; left: 53px; top: 25px; width: 600px; height: 60px;"></textarea>
+        </div>
+
+        <div id="drawing" class="hidden">
+            <canvas id="gen" width="788px", height="400px"></canvas>
+            <img id="result">
+        </div>
+
+        <input id="generate" type="button" value="다 됐어요!"/>
+
+        <script>
+            (function($, $$) {
+                var canvas = $("gen");
+                var sup_canvas = $("support-canvas");
+                if (canvas.getContext === undefined) {
+                    sup_canvas.textContent = "지원 안 함";
+                    sup_canvas.color = "red";
+                    $("generate").disabled = true;
+                } else {
+                    sup_canvas.textContent = "지원함";
+                }
+               
+                $("bg").addEventListener("load", function(e) {
+                    var context = canvas.getContext("2d");
+                   
+                    var insertNewLine = function(str, w) {
+                        var ret = "";
+                        var temp = "";
+                        for (var i = 0; i < str.length; i++) {
+                            var c = str.charAt(i);
+                            if (c == '\n') {
+                                ret += "\n" + temp;
+                                temp = "";
+                                continue;
+                            }
+                            if (context.measureText((temp + c).trimRight()).width > w) {
+                                ret += "\n" + temp;
+                                temp = "";
+                            }
+                            temp += c;
+                        }
+                        ret += "\n" + temp;
+                        return ret.substr(1).split("\n");
+                    };
+
+                    generateBrothers = function(myfont) {
+                        context.drawImage($("bg"), 0, 0);
+                        context.font = '16px ' + myfont + ',sans-serif';
+                        context.textBaseline = "top";
+                       
+                        var talist = $$("textarea");
+                        for (var i = 0; i < talist.length; i++) {
+                            var ta = talist[i];
+                            var lines = insertNewLine(ta.value, ta.offsetWidth);
+                            for (var j = 0; j < lines.length; j++) {
+                                context.fillText(lines[j], ta.offsetLeft, ta.offsetTop + j*16);
+                            }
+                        }
+                        result.src = canvas.toDataURL('image/png');
+                    };
+
+                    $("generate").addEventListener("click", function(e) {
+                        var inputPhase = ($("inputs").className == "");
+                        if (inputPhase) {
+                            $("generate").disabled = true;
+                            generateBrothers('"맑은 고딕"');
+                            $("generate").disabled = false;
+                        }
+                        $("inputs").className = (inputPhase ? "hidden" : "");
+                        $("drawing").className = (inputPhase ? "" : "hidden");
+                        $("generate").value = (inputPhase ? "다 안 됐어요~" : "다 됐어요~");
+                    });
+                });
+            })(function(_id) { return document.getElementById(_id); },
+                function(_name) { return document.getElementsByTagName(_name); });
+        </script>
+    </body>
+</html>
+

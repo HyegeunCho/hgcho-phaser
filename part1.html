@@ -1,0 +1,184 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Phaser - Making your first game, part 1</title>
+	<script type="text/javascript" src="phaser-sdk/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+var score = 0;
+var scoreText;
+
+function preload() 
+{
+    game.load.image('sky', 'assets/sky.png');
+    game.load.image('ground', 'assets/platform.png');
+    game.load.image('star', 'assets/star.png');
+    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    // core/Game.js 파일을 보면 Phaser.Game 객체의 load 함수에 Phaser.Loader 객체를 할당.
+    // loader/Loader.js 파일에 프로토타입이 선언되어 있다.
+    // Loader.js 파일의 fileComplete 함수에서 로딩하여 처리하는 파일 타입이 명시되어 있음
+    // packfile, image, spritesheet, textureatlas, bitmapfont (폰트의 경우 loader/LoaderParser.js에서 추가 처리 하는 듯)
+    // video, audio, text, shader, physics, script, binary
+
+}
+
+function create() 
+{
+    // We're going to be using physics, so enable the Arcade Physics's system
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    // physics/Physics.js 파일을 보면 물리 시스템이 명기되어 있다.
+    // ARCADE, P2JS, NINJA, BOX2D, CHIPMUNK, MATTERJS 의 총 6개의 설정이 있는데  실제 parseConfig 함수에서는 5개만 설정되어 있다.
+
+    // A simple background for our game
+    game.add.sprite(0, 0, 'sky');
+
+    // The platforms group contains the ground and the 2 ledges we can jump on
+    platforms = game.add.group();
+    // 그룹은 디스플레이 오브젝트 및 이미지를 포함할 수 있는 일종의 컨테이너이다. 
+    // core/Group.js 에 정의되어 있음
+    // 그룹에 관해 Groups are really powerful. As their name implies they allow you to group together similar objects and control them all as one single unit. You can also check for collision between Groups
+
+    // We will enable physics for any object that is created in this group
+    platforms.enableBody = true;
+
+    // Here we create the ground
+    var ground = platforms.create(0, game.world.height - 64, 'ground');
+
+    // Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    ground.scale.setTo(2, 2);
+
+    // This stops it from falling away when you jump on it
+    ground.body.immovable = true;
+    // 유니티에서 키네마틱 설정과 비슷한 듯..
+    // immovable은 물리와 관계된 멤버이므로 enableBody = true를 켜주지 않으면 null ref 에러 발생
+
+    // Now let's create two ledges
+    var ledge = platforms.create(400, 400, 'ground');
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(-150, 250, 'ground');
+    ledge.body.immovable = true;
+
+
+    ////////////////////////////////////////
+    // Part5.html
+    ///////////////////////////////////////
+
+    // The player and its settings
+    player = game.add.sprite(32, game.world.height - 150, 'dude');
+
+    // We need to enable physics on the player
+    game.physics.arcade.enable(player);
+
+    // Player physics properties. Give the little guy a slight bounce.
+    player.body.bounce.y = 0.2;
+    player.body.gravity.y = 300;
+    player.body.collideWorldBounds = true;
+
+    // Our two animations, walking left and right.
+    player.animations.add('left', [0, 1, 2, 3], 10, true);
+    player.animations.add('right', [5, 6, 7, 8], 10, true);
+    // 페이저는 스프라이트 flip을 지원한다. : Phaser supports flipping sprites to save on animation frames, but for the sake of this tutorial we'll keep it old school.
+
+    cursors = game.input.keyboard.createCursorKeys();
+    // Phaser has a built-in Keyboard manager and one of the benefits of using that is this handy little function
+    // 이벤트 리스너를 직접 설정할 필요가 없다.
+    // input/Keyboard.js 파일을 보면 Phaser.KeyCode 객체에 키보드에 대응하는 키코드가 정의되어 있다.
+    // input 폴더 내부에 각 입력 장치별 프로토타입 객체가 정의되어 있으므로 갖다 쓰면 된다 (심지어 디바이스 패드도 있음...)
+
+    // game.add.sprite(0, 0, 'star');
+    // 스프라이트 sorting order 순서는 add 된 순서에 따라 결정된다. 따라서 add 함수 호출 순서가 매우 중요.
+    // 0, 0은 좌상단이다.
+
+    stars = game.add.group();
+    stars.enableBody = true;
+
+    // Here we'll create 12 of them evenly spaced apart
+    for (var i = 0; i < 12; i++)
+    {
+        // Create a star inside of the 'stars' group
+        var star = stars.create(i * 70, 0, 'star');
+
+        // let gravity do its thing
+        star.body.gravity.y = 6;
+
+        // This just gives each star a slightly random bounce value
+        star.body.bounce.y = 0.7 + Math.random() * 0.2;
+
+        // Bounce is a value between 0 (no bounce at all) and 1 (a full bounce). Ours will bounce somewhere between 0.7 and 0.9. If we were to run the code like this the stars would fall through the bottom of the game
+    }
+
+    scoreText = game.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
+    // 16x16 is the coordinate to display the text at. 'score: 0' is the default string to display and the object that follows contains a font size and fill colour
+}
+
+
+// The update function is called by the core game loop every frame
+function update() 
+{
+    // Collide the player and the stars with the platformx
+    var hitPlatform = game.physics.arcade.collide(player, platforms);
+    // t takes two objects and tests for collision and performs separation against them. In this case we're giving it the player sprite and the platforms Group. It's clever enough to run collision against all Group members, so this one call will collide against the ground and both ledges. The result is a firm platform
+    // 그룹을 대상으로 body가 설정되어 있기 때문에 그룹 대상으로 한방에 collision 체크할 수 있다.
+
+    // Reset the players velocity (movement)
+    player.body.velocity.x = 0;
+
+    if (cursors.left.isDown)
+    {
+        // Move to the left
+        player.body.velocity.x = -150;
+        player.animations.play("left");
+    }
+    else if (cursors.right.isDown)
+    {
+        // Move to the right
+        player.body.velocity.x = 150;
+        player.animations.play("right");
+    }
+    else
+    {
+        // Stand still
+        player.animations.stop();
+        player.frame = 4;
+    }
+
+    // Allow the player to jump if they are touching the ground
+    if (cursors.up.isDown && player.body.touching.down && hitPlatform)
+    {
+        player.body.velocity.y = -350;
+        // we apply a vertical velocity of 350 px/sec sq. The player will fall to the ground automatically because of the gravity value we applied to it
+    }
+    // we also test if the player is touching the floor : player.body.touching.down 조건
+    // just to make sure the player did actually collide with the floor, and not anything else. : hitPlatform 조건
+
+    var hitPlatformBetweenStar = game.physics.arcade.collide(stars, platforms);
+    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    // This tells Phaser to check for an overlap between the player and any star in the stars Group. If found then pass them to the 'collectStar' function
+}   
+
+function collectStar(player, star)
+{
+    // Removes the star from the screen
+    star.kill();
+
+    // Add and update the score
+    score += 10;
+    scoreText.text = 'Score: ' + score;
+}
+
+</script>
+
+</body>
+</html>
