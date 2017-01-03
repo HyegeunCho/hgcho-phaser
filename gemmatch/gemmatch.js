@@ -1,7 +1,7 @@
 // Example by https://twitter.com/awapblog
 
-var GAME_WIDTH = 526;
-var GAME_HEIGHT = 640;
+var GAME_WIDTH = 640;
+var GAME_HEIGHT = 960;
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
@@ -38,7 +38,44 @@ var remainSecond = 0;
 
 var isPause = false;
 
+var isFirstPortrait = true;
+
 function preload() {
+    isFirstProtrait = game.scale.isPortrait;
+    // Phser Auto Scaling : http://www.html5gamedevs.com/topic/5949-solution-scaling-for-multiple-devicesresolution-and-screens/
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;            
+    game.scale.minWidth = GAME_WIDTH/2;
+    game.scale.minHeight = GAME_HEIGHT/2;
+
+    if (game.device.desktop) {
+        game.scale.maxWidth = GAME_WIDTH;
+        game.scale.maxHeight = GAME_HEIGHT;            
+        game.scale.pageAlignHorizontally = true;            
+        game.scale.pageAlignVertically = true;            
+        game.scale.updateLayout(true);        
+    } else {            
+        game.scale.maxWidth = 2048; //You can change this to gameWidth*2.5 if needed            
+        game.scale.maxHeight = 1228; //Make sure these values are proportional to the gameWidth and gameHeight            
+        game.scale.pageAlignHorizontally = true;            
+        game.scale.pageAlignVertically = true;            
+        game.scale.forceOrientation(false, true);            
+        //ßgame.scale.hasResized.add(this.gameResized, this);            
+        game.scale.enterIncorrectOrientation.add(handleIncorrect);            
+        game.scale.leaveIncorrectOrientation.add(handleCorrect);            
+        game.scale.updateLayout(true);     
+    }
+
+
+
+    // Phaser Orientation Lock
+    
+    //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    //game.scale.forceOrientation(false, true);
+    /*
+    
+    game.scale.enterIncorrectOrientation.add(handleIncorrect);
+    game.scale.leaveIncorrectOrientation.add(handleCorrect);
+    */
 
     game.load.spritesheet("GEMS", "assets/sprites/diamonds32x5.png", GEM_SIZE, GEM_SIZE);
     game.load.image('btnFullscreen', 'assets/btn_fullscreen.png');
@@ -46,6 +83,22 @@ function preload() {
     game.load.image('btnResume', 'assets/btn_resume.png');
 
     game.add.plugin(Phaser.Plugin.Debug);
+}
+
+function handleIncorrect() {
+    if (!game.device.desktop) {
+        document.getElementById("turn").style.display = "block";
+    }
+}
+
+function handleCorrect() {
+    if (!game.device.desktop) {
+        if (!isFirstProtrait) {
+            document.getElementById("turn").style.display = "block";
+        } else {
+            document.getElementById("turn").style.display = "none";    
+        }
+    }
 }
 
 function create() {
@@ -67,6 +120,8 @@ function create() {
     gameScore = 0;
 
     startTimestamp = (new Date()).getTime();
+
+    game.scale.updateOrientationState();
 }
 
 function render()
@@ -83,14 +138,23 @@ function update()
     var currentTimestamp = (new Date()).getTime();
     remainSecond = GAME_LIMIT_TIME - ((currentTimestamp - startTimestamp) / 1000);
     
-    if (remainSecond <= 0) 
-    {
+    if (remainSecond <= 0) {
         allowInput = false;
-        remainTimeText.text = 'reaminTime: ' + 0.00;
-
-    } else 
-    {
-        remainTimeText.text = 'reaminTime: ' + remainSecond.toFixed(2);    
+        remainTimeText.text = 'reaminTime: ' + 0.00 + " / " + (function() {
+            if (game.scale.isGamePortrait) {
+                return "True";
+            } else {
+                return "False";
+            }
+        }());
+    } else {
+        remainTimeText.text = 'reaminTime: ' + remainSecond.toFixed(2) + " / " + (function() {
+            if (game.scale.isGamePortrait) {
+                return "True";
+            } else {
+                return "False";
+            }
+        }());;    
     }
 }
 
@@ -232,8 +296,8 @@ function initUI()
     imgBtnResume.visible = false;
 
 
-    scoreText = game.add.text(16, GAME_HEIGHT - 64, 'score: 0', {fontSize: '32px', fill: '#fff'});
-    remainTimeText = game.add.text(16, GAME_HEIGHT - (64 * 1.5), 'reaminTime : ' + GAME_LIMIT_TIME.toFixed(2), {fontSize: '32px', fill: '#fff'});
+    scoreText = game.add.text(16, 64 * 9, 'score: 0', {fontSize: '24px', fill: '#fff'});
+    remainTimeText = game.add.text(16, 64 * 9.5, 'reaminTime : ' + GAME_LIMIT_TIME.toFixed(2), {fontSize: '24px', fill: '#fff'});
 }
 
 // fill the screen with as many gems as possible
