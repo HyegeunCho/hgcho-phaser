@@ -1,0 +1,164 @@
+{"frames": [
+
+{
+	"filename": "btn_game_pause.png",
+	"frame": {"x":0,"y":0,"w":70,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":70},
+	"sourceSize": {"w":70,"h":70}
+},
+{
+	"filename": "btn_game_resume.png",
+	"frame": {"x":70,"y":0,"w":70,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":70},
+	"sourceSize": {"w":70,"h":70}
+},
+{
+	"filename": "btn_popup_restart.png",
+	"frame": {"x":140,"y":0,"w":195,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":56},
+	"sourceSize": {"w":195,"h":56}
+},
+{
+	"filename": "btn_popup_resume.png",
+	"frame": {"x":0,"y":70,"w":195,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":56},
+	"sourceSize": {"w":195,"h":56}
+},
+{
+	"filename": "btn_popupt_go_main.png",
+	"frame": {"x":195,"y":70,"w":195,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":56},
+	"sourceSize": {"w":195,"h":56}
+},
+{
+	"filename": "img_fever_gauge.png",
+	"frame": {"x":0,"y":126,"w":480,"h":7},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":7},
+	"sourceSize": {"w":480,"h":7}
+},
+{
+	"filename": "img_fire_gauge_body.png",
+	"frame": {"x":0,"y":133,"w":239,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":239,"h":21},
+	"sourceSize": {"w":239,"h":21}
+},
+{
+	"filename": "img_fire_gauge_head.png",
+	"frame": {"x":239,"y":133,"w":10,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":21},
+	"sourceSize": {"w":10,"h":21}
+},
+{
+	"filename": "img_fire_gauge_tail.png",
+	"frame": {"x":249,"y":133,"w":10,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":21},
+	"sourceSize": {"w":10,"h":21}
+},
+{
+	"filename": "img_game_bg_bottom.png",
+	"frame": {"x":0,"y":154,"w":480,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":142},
+	"sourceSize": {"w":480,"h":142}
+},
+{
+	"filename": "img_game_bg_top.png",
+	"frame": {"x":0,"y":296,"w":480,"h":182},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":182},
+	"sourceSize": {"w":480,"h":182}
+},
+{
+	"filename": "img_game_board.png",
+	"frame": {"x":0,"y":478,"w":480,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":476},
+	"sourceSize": {"w":480,"h":476}
+},
+{
+	"filename": "img_game_message_go.png",
+	"frame": {"x":0,"y":954,"w":371,"h":194},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":194},
+	"sourceSize": {"w":371,"h":194}
+},
+{
+	"filename": "img_game_message_ready.png",
+	"frame": {"x":0,"y":1148,"w":371,"h":194},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":194},
+	"sourceSize": {"w":371,"h":194}
+},
+{
+	"filename": "img_game_message_time_over.png",
+	"frame": {"x":0,"y":1342,"w":371,"h":194},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":194},
+	"sourceSize": {"w":371,"h":194}
+},
+{
+	"filename": "img_popup_pause_bg.png",
+	"frame": {"x":0,"y":1536,"w":261,"h":266},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":266},
+	"sourceSize": {"w":261,"h":266}
+},
+{
+	"filename": "img_time_gauge_body.png",
+	"frame": {"x":0,"y":1802,"w":450,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":23},
+	"sourceSize": {"w":450,"h":23}
+},
+{
+	"filename": "img_time_gauge_head.png",
+	"frame": {"x":450,"y":1802,"w":10,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":23},
+	"sourceSize": {"w":10,"h":23}
+},
+{
+	"filename": "img_time_gauge_tail.png",
+	"frame": {"x":460,"y":1802,"w":10,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":23},
+	"sourceSize": {"w":10,"h":23}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ui.png",
+	"format": "RGBA8888",
+	"size": {"w":480,"h":1825},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:967126825971d9df904dfd71aad34648:fa77c8f51c5c6e66e3f045a059227c88:5b04aa198265472a3c5f56958d78e97b$"
+}
+}

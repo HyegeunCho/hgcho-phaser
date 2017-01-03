@@ -1,0 +1,47 @@
+{
+    "ingame": [
+        {
+            "type": "atlas",
+            "key": "effect",
+            "textureURL": "assets/atlas/effect.png",
+            "atlasURL": "assets/atlas/effect.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "ingame",
+            "textureURL": "assets/atlas/ingame.png",
+            "atlasURL": "assets/atlas/ingame.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "ui",
+            "textureURL": "assets/atlas/ui.png",
+            "atlasURL": "assets/atlas/ui.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "spritesheet",
+            "key": "diamonds32x5",
+            "url": "assets/sprites/diamonds32x5.png",
+            "frameWidth": 0,
+            "frameHeight": 0,
+            "frameMax": -1,
+            "margin": 0,
+            "spacing": 0
+        },
+        {
+            "type": "script",
+            "key": "ingameScene",
+            "url": "assets/scenes/ingame.js"
+        }
+    ],
+    "meta": {
+        "generated": "1483425555584",
+        "app": "Phaser Editor",
+        "url": "http://phasereditor.boniatillo.com",
+        "version": "1.0",
+        "copyright": "Arian Fornaris (c) 2015,2016"
+    }
+}

@@ -5,6 +5,10 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /js
+  static_dir: js
+- url: /lib
+  static_dir: lib
 - url: /assets
   static_dir: assets
 

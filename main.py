@@ -35,6 +35,11 @@ class PhaserGemmatchHandler(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'gemmatch.html')
         self.response.write(template.render(path, {'datetime': datetime.datetime.now().time()}))
 
+class AnipangHandler(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'gemmatch2.html')
+        self.response.write(template.render(path, {'datetime': datetime.datetime.now().time()}))        
+
 class KangHanByulMakerHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'slack_kanghanbyul.html')
@@ -76,4 +81,5 @@ app = webapp2.WSGIApplication([
     ('/gemmatch', PhaserGemmatchHandler),
     ('/slack_kanghanbyul', KangHanByulMakerHandler),
     ('/frame-test', DrawCallTestHandler),
+    ('/anipang', AnipangHandler),
 ], debug=True)
