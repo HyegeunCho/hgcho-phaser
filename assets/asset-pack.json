@@ -35,10 +35,16 @@
             "type": "script",
             "key": "ingameScene",
             "url": "assets/scenes/ingame.js"
+        },
+        {
+            "type": "atlas",
+            "key": "seacreatures_json",
+            "textureURL": "assets/atlas/seacreatures_json.png",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
         }
     ],
     "meta": {
-        "generated": "1483425555584",
+        "generated": "1483512774351",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",

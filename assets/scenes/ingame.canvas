@@ -15,7 +15,7 @@
           "type": "group",
           "id": "94b43724-2381-44e3-9f82-2708d5f2c169",
           "info": {
-            "editorName": "groupUI",
+            "editorName": "ingameUI",
             "children": [
               {
                 "type": "atlas-sprite",
@@ -28,155 +28,202 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "9e949f3e-957e-4a53-a630-68c0269f5057",
+                "id": "735d0f68-a075-40b7-924f-cefab163e1a3",
                 "asset": "1",
                 "info": {
-                  "editorName": "img_game_board",
-                  "y": 182
+                  "editorName": "img_time_gauge_body",
+                  "editorPublic": true,
+                  "x": 60,
+                  "y": 690,
+                  "scale.x": 0.8
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "57cd2634-e2e7-4f8e-8ba0-634656175f76",
+                "asset": "2",
+                "info": {
+                  "editorName": "img_time_gauge_tail",
+                  "editorPublic": true,
+                  "x": 420,
+                  "y": 690
                 }
               },
               {
                 "type": "atlas-sprite",
                 "id": "d5255666-404b-4613-bb83-34ef07f386d9",
-                "asset": "2",
+                "asset": "3",
                 "info": {
                   "editorName": "img_time_gauge_head",
+                  "editorPublic": true,
                   "x": 50,
                   "y": 690
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "group",
-          "id": "30be9793-28c0-426f-83b8-feb2ed0d0c61",
-          "info": {
-            "editorName": "topUI",
-            "children": [
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "9e949f3e-957e-4a53-a630-68c0269f5057",
+                "asset": "4",
+                "info": {
+                  "editorName": "img_game_board",
+                  "editorPublic": true,
+                  "y": 182
+                }
+              },
               {
                 "type": "atlas-sprite",
                 "id": "ab87bbde-a3dd-411f-92b5-c0c6719f3452",
-                "asset": "3",
+                "asset": "5",
                 "info": {"editorName": "img_game_bg_top"}
               },
               {
                 "type": "atlas-sprite",
-                "id": "54cd25de-77da-4f27-92a7-adf2eef791bc",
-                "asset": "4",
+                "id": "175f02c7-d93b-4f47-8103-50bac656b50b",
+                "asset": "6",
                 "info": {
-                  "editorName": "btn_game_pause",
-                  "x": 390,
-                  "y": 27
+                  "editorName": "img_game_message_ready",
+                  "editorPublic": true,
+                  "x": 90,
+                  "y": 320
                 }
               },
               {
                 "type": "atlas-sprite",
-                "id": "9a8b88e8-051d-43bb-a226-66a8b95a96e3",
-                "asset": "5",
+                "id": "a7ef85d1-9892-4286-b87c-b57b28f70a39",
+                "asset": "7",
                 "info": {
-                  "editorName": "btn_game_resume",
-                  "x": 390,
-                  "y": 27
+                  "editorName": "img_game_message_go",
+                  "editorPublic": true,
+                  "x": 90,
+                  "y": 320
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "group",
-          "id": "65e69258-667e-4d07-8fe5-781f6e89ef6c",
-          "info": {
-            "editorName": "guage_body",
-            "children": [{
-              "type": "atlas-sprite",
-              "id": "735d0f68-a075-40b7-924f-cefab163e1a3",
-              "asset": "6",
-              "info": {
-                "editorName": "img_time_gauge_body",
-                "x": 60,
-                "y": 690,
-                "scale.x": 0.8
-              }
-            }]
-          }
-        },
-        {
-          "type": "group",
-          "id": "92d8874f-0007-4c0e-bb32-3fb392d85109",
-          "info": {
-            "editorName": "guage_tail",
-            "children": [{
-              "type": "atlas-sprite",
-              "id": "57cd2634-e2e7-4f8e-8ba0-634656175f76",
-              "asset": "7",
-              "info": {
-                "editorName": "img_time_gauge_tail",
-                "x": 420,
-                "y": 690
-              }
-            }]
-          }
-        },
-        {
-          "type": "group",
-          "id": "3775727e-99f4-47ad-bb1b-c146c00174c8",
-          "info": {
-            "editorName": "message_ready",
-            "children": [{
-              "type": "atlas-sprite",
-              "id": "175f02c7-d93b-4f47-8103-50bac656b50b",
-              "asset": "8",
-              "info": {
-                "editorName": "img_game_message_ready",
-                "x": 90,
-                "y": 320
-              }
-            }]
-          }
-        },
-        {
-          "type": "group",
-          "id": "2226ed9c-a35b-4799-a334-46d444ba5fdb",
-          "info": {
-            "editorName": "message_go",
-            "children": [{
-              "type": "atlas-sprite",
-              "id": "a7ef85d1-9892-4286-b87c-b57b28f70a39",
-              "asset": "9",
-              "info": {
-                "editorName": "img_game_message_go",
-                "x": 90,
-                "y": 320
-              }
-            }]
-          }
-        },
-        {
-          "type": "group",
-          "id": "7261bb6e-a42d-4944-a0ea-c23716830017",
-          "info": {
-            "editorName": "message_timeover",
-            "children": [
+              },
               {
                 "type": "atlas-sprite",
                 "id": "29cfe6cf-e9e3-4eef-be07-ea1e33f72fb1",
-                "asset": "10",
+                "asset": "8",
                 "info": {
                   "editorName": "img_game_message_time_over",
+                  "editorPublic": true,
                   "x": 48,
                   "y": 323
                 }
               },
               {
-                "type": "group",
-                "id": "74f6fcf9-b894-45bf-a9d5-9a0a451f215e",
+                "type": "button",
+                "id": "123afbe4-5fc6-448d-a51d-e04323ea01c2",
+                "asset": "9",
                 "info": {
-                  "editorName": "11",
-                  "children": []
+                  "editorName": "btn_game_pause",
+                  "editorPublic": true,
+                  "x": 390,
+                  "y": 27,
+                  "callback": "this.OnClickBtnPause",
+                  "overFrame": "btn_game_pause.png",
+                  "downFrame": "btn_game_pause.png",
+                  "upFrame": "btn_game_pause.png"
+                }
+              },
+              {
+                "type": "button",
+                "id": "18b2992b-ca5e-472c-ab29-4653f352c05b",
+                "asset": "10",
+                "info": {
+                  "editorName": "btn_game_resume",
+                  "editorPublic": true,
+                  "x": 390,
+                  "y": 27,
+                  "callback": "this.OnClickBtnResume",
+                  "overFrame": "btn_game_resume.png",
+                  "downFrame": "btn_game_resume.png",
+                  "upFrame": "btn_game_resume.png"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "7145d40b-630e-4e49-99dc-b1ceb98fa441",
+          "info": {
+            "editorName": "PopupPause",
+            "editorPublic": true,
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "3013d267-b576-423b-8964-a572ea7e3359",
+                "asset": "11",
+                "info": {
+                  "editorName": "img_popup_pause_bg_png",
+                  "x": 110,
+                  "y": 267
+                }
+              },
+              {
+                "type": "button",
+                "id": "af625c00-28f9-40e4-914c-32a4efe589e4",
+                "asset": "12",
+                "info": {
+                  "editorName": "btn_popup_restart",
+                  "editorPublic": true,
+                  "x": 143,
+                  "y": 302,
+                  "callback": "this.OnClickBtnPauseRestart",
+                  "overFrame": "btn_popup_restart.png",
+                  "downFrame": "btn_popup_restart.png",
+                  "upFrame": "btn_popup_restart.png"
+                }
+              },
+              {
+                "type": "button",
+                "id": "9c7d9f93-2a96-432c-9fff-a32b753e5585",
+                "asset": "13",
+                "info": {
+                  "editorName": "btn_popup_resume",
+                  "editorPublic": true,
+                  "x": 143,
+                  "y": 372,
+                  "callback": "this.OnClickBtnPauseResume",
+                  "overFrame": "btn_popup_resume.png",
+                  "downFrame": "btn_popup_resume.png",
+                  "upFrame": "btn_popup_resume.png"
+                }
+              },
+              {
+                "type": "button",
+                "id": "8bbe6891-a667-481b-86bd-0c0e72154e50",
+                "asset": "14",
+                "info": {
+                  "editorName": "btn_popup_go_main",
+                  "editorPublic": true,
+                  "x": 143,
+                  "y": 442,
+                  "callback": "this.OnClickBtnPauseExit",
+                  "overFrame": "btn_popupt_go_main.png",
+                  "downFrame": "btn_popupt_go_main.png",
+                  "upFrame": "btn_popupt_go_main.png"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "df315685-1588-4e5c-83b8-920af408aa1e",
+          "info": {
+            "editorName": "GroupAnimTimeOver",
+            "editorPublic": true,
+            "children": [{
+              "type": "atlas-sprite",
+              "id": "3738576a-347e-45d3-a73e-1ea1605840a3",
+              "asset": "15",
+              "info": {
+                "editorName": "animTimeOver0000",
+                "editorPublic": true,
+                "x": 174,
+                "y": 295
+              }
+            }]
           }
         }
       ]
@@ -193,61 +240,91 @@
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_game_board.png"
+      "sprite": "img_time_gauge_body.png"
     },
     "2": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_time_gauge_head.png"
+      "sprite": "img_time_gauge_tail.png"
     },
     "3": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_game_bg_top.png"
+      "sprite": "img_time_gauge_head.png"
     },
     "4": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "btn_game_pause.png"
+      "sprite": "img_game_board.png"
     },
     "5": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "btn_game_resume.png"
+      "sprite": "img_game_bg_top.png"
     },
     "6": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_time_gauge_body.png"
+      "sprite": "img_game_message_ready.png"
     },
     "7": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_time_gauge_tail.png"
+      "sprite": "img_game_message_go.png"
     },
     "8": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_game_message_ready.png"
+      "sprite": "img_game_message_time_over.png"
     },
     "9": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_game_message_go.png"
+      "sprite": "btn_game_pause.png"
     },
     "10": {
       "file": "WebContent/assets/asset-pack.json",
       "section": "ingame",
       "asset": "ui",
-      "sprite": "img_game_message_time_over.png"
+      "sprite": "btn_game_resume.png"
+    },
+    "11": {
+      "file": "WebContent/assets/asset-pack.json",
+      "section": "ingame",
+      "asset": "ui",
+      "sprite": "img_popup_pause_bg.png"
+    },
+    "12": {
+      "file": "WebContent/assets/asset-pack.json",
+      "section": "ingame",
+      "asset": "ui",
+      "sprite": "btn_popup_restart.png"
+    },
+    "13": {
+      "file": "WebContent/assets/asset-pack.json",
+      "section": "ingame",
+      "asset": "ui",
+      "sprite": "btn_popup_resume.png"
+    },
+    "14": {
+      "file": "WebContent/assets/asset-pack.json",
+      "section": "ingame",
+      "asset": "ui",
+      "sprite": "btn_popupt_go_main.png"
+    },
+    "15": {
+      "file": "WebContent/assets/asset-pack.json",
+      "section": "ingame",
+      "asset": "effect",
+      "sprite": "animTimeOver0000"
     }
   }
 }

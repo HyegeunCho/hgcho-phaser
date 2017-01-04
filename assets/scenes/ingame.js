@@ -14,45 +14,62 @@ function ingame(aGame, aParent) {
 
 	/* --- pre-init-end --- */
 
-	var groupUI = this.game.add.group(this);
+	var ingameUI = this.game.add.group(this);
 
-	this.game.add.sprite(0, 658, 'ui', 'img_game_bg_bottom.png', groupUI);
+	this.game.add.sprite(0, 658, 'ui', 'img_game_bg_bottom.png', ingameUI);
 
-	this.fGameBoard = this.game.add.sprite(0, 182, 'ui', 'img_game_board.png', groupUI);
-
-	this.game.add.sprite(50, 690, 'ui', 'img_time_gauge_head.png', groupUI);
-
-	var topUI = this.game.add.group(this);
-
-	this.fTopUIImage = this.game.add.sprite(0, 0, 'ui', 'img_game_bg_top.png', topUI);
-
-	this.fBtnPause = this.game.add.sprite(390, 27, 'ui', 'btn_game_pause.png', topUI);
-
-	this.fBtnResume = this.game.add.sprite(390, 27, 'ui', 'btn_game_resume.png', topUI);
-
-	var guage_body = this.game.add.group(this);
-
-	var img_time_gauge_body = this.game.add.sprite(60, 690, 'ui', 'img_time_gauge_body.png', guage_body);
+	var img_time_gauge_body = this.game.add.sprite(60, 690, 'ui', 'img_time_gauge_body.png', ingameUI);
 	img_time_gauge_body.scale.setTo(0.8, 1.0);
-	this.fGuageBody = img_time_gauge_body;
-	
-	var guage_tail = this.game.add.group(this);
 
-	this.fGuageTail = this.game.add.sprite(420, 690, 'ui', 'img_time_gauge_tail.png', guage_tail);
+	var img_time_gauge_tail = this.game.add.sprite(420, 690, 'ui', 'img_time_gauge_tail.png', ingameUI);
 
-	var message_ready = this.game.add.group(this);
+	var img_time_gauge_head = this.game.add.sprite(50, 690, 'ui', 'img_time_gauge_head.png', ingameUI);
 
-	this.fMessageReady = this.game.add.sprite(90, 320, 'ui', 'img_game_message_ready.png', message_ready);
+	var img_game_board = this.game.add.sprite(0, 182, 'ui', 'img_game_board.png', ingameUI);
 
-	var message_go = this.game.add.group(this);
+	this.game.add.sprite(0, 0, 'ui', 'img_game_bg_top.png', ingameUI);
 
-	this.fMessageGo = this.game.add.sprite(90, 320, 'ui', 'img_game_message_go.png', message_go);
+	var img_game_message_ready = this.game.add.sprite(90, 320, 'ui', 'img_game_message_ready.png', ingameUI);
 
-	var message_timeover = this.game.add.group(this);
+	var img_game_message_go = this.game.add.sprite(90, 320, 'ui', 'img_game_message_go.png', ingameUI);
 
-	this.fMessageTimeOver = this.game.add.sprite(48, 323, 'ui', 'img_game_message_time_over.png', message_timeover);
+	var img_game_message_time_over = this.game.add.sprite(48, 323, 'ui', 'img_game_message_time_over.png', ingameUI);
 
-	this.fTopUI = topUI;
+	var btn_game_pause = this.game.add.button(390, 27, 'ui', this.OnClickBtnPause, this, 'btn_game_pause.png', 'btn_game_pause.png', 'btn_game_pause.png', 'btn_game_pause.png', ingameUI);
+
+	var btn_game_resume = this.game.add.button(390, 27, 'ui', this.OnClickBtnResume, this, 'btn_game_resume.png', 'btn_game_resume.png', 'btn_game_resume.png', 'btn_game_resume.png', ingameUI);
+
+	var PopupPause = this.game.add.group(this);
+
+	this.game.add.sprite(110, 267, 'ui', 'img_popup_pause_bg.png', PopupPause);
+
+	var btn_popup_restart = this.game.add.button(143, 302, 'ui', this.OnClickBtnPauseRestart, this, 'btn_popup_restart.png', 'btn_popup_restart.png', 'btn_popup_restart.png', 'btn_popup_restart.png', PopupPause);
+
+	var btn_popup_resume = this.game.add.button(143, 372, 'ui', this.OnClickBtnPauseResume, this, 'btn_popup_resume.png', 'btn_popup_resume.png', 'btn_popup_resume.png', 'btn_popup_resume.png', PopupPause);
+
+	var btn_popup_go_main = this.game.add.button(143, 442, 'ui', this.OnClickBtnPauseExit, this, 'btn_popupt_go_main.png', 'btn_popupt_go_main.png', 'btn_popupt_go_main.png', 'btn_popupt_go_main.png', PopupPause);
+
+	var GroupAnimTimeOver = this.game.add.group(this);
+
+	var animTimeOver0000 = this.game.add.sprite(174, 295, 'effect', 'animTimeOver0000', GroupAnimTimeOver);
+
+	 // public fields
+
+	this.fImg_time_gauge_body = img_time_gauge_body;
+	this.fImg_time_gauge_tail = img_time_gauge_tail;
+	this.fImg_time_gauge_head = img_time_gauge_head;
+	this.fImg_game_board = img_game_board;
+	this.fImg_game_message_ready = img_game_message_ready;
+	this.fImg_game_message_go = img_game_message_go;
+	this.fImg_game_message_time_over = img_game_message_time_over;
+	this.fBtn_game_pause = btn_game_pause;
+	this.fBtn_game_resume = btn_game_resume;
+	this.fPopupPause = PopupPause;
+	this.fBtn_popup_restart = btn_popup_restart;
+	this.fBtn_popup_resume = btn_popup_resume;
+	this.fBtn_popup_go_main = btn_popup_go_main;
+	this.fGroupAnimTimeOver = GroupAnimTimeOver;
+	this.fAnimTimeOver0000 = animTimeOver0000;
 
 	/* --- post-init-begin --- */
 
@@ -69,4 +86,3 @@ ingame.prototype.constructor = Phaser.Group;
 /* --- end generated code --- */
 
 // you can insert code here
-

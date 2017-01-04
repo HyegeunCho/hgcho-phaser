@@ -1,5 +1,24 @@
 // Example by https://twitter.com/awapblog
 // ingame gemmatch state.
+function _LevelPreferences(){
+	this.GAME_WIDTH = 480;
+	this.GAME_HEIGHT = 800;
+	this.INGAME_UI_TOP_OFFSET = 175;
+	this.INGAME_UI_LEFT_OFFSET = -8;
+	this.GEM_SIZE = 68;
+	this.GEM_SPACING = 0;
+	this.GEM_SIZE_SPACED = this.GEM_SIZE + this.GEM_SPACING;
+	this.GEM_TWEEN_SPEED = 150;
+	this.BOARD_COLS = 7;
+	this.BOARD_ROWS = 7;
+	this.MATCH_MIN = 3;
+	this.SCORE_PER_GEM = 10;
+	this.GEM_REFILL_DURATION_TIME = 50;
+	this.GAME_LIMIT_TIME = 30;
+	this.GAME_TIMER_DURATION_MS = 250;
+	this.GAUGE_TIMER_BODY_INITIAL_SCALE = 0.8;
+}
+var LevelPreferences = new _LevelPreferences();
 
 function Level() {
 	Phaser.State.call(this);
@@ -10,16 +29,17 @@ Level.prototype = proto;
 Level.prototype.constructor = Level;
 
 Level.prototype.init = function() {
+	
 	isFirstProtrait = this.scale.isPortrait;
 	// Phser Auto Scaling :
 	// http://www.html5gamedevs.com/topic/5949-solution-scaling-for-multiple-devicesresolution-and-screens/
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-	this.scale.minWidth = GAME_WIDTH / 2;
-	this.scale.minHeight = GAME_HEIGHT / 2;
+	this.scale.minWidth = LevelPreferences.GAME_WIDTH / 2;
+	this.scale.minHeight = LevelPreferences.GAME_HEIGHT / 2;
 
 	if (this.game.device.desktop) {
-		this.scale.maxWidth = GAME_WIDTH;
-		this.scale.maxHeight = GAME_HEIGHT;
+		this.scale.maxWidth = LevelPreferences.GAME_WIDTH;
+		this.scale.maxHeight = LevelPreferences.GAME_HEIGHT;
 		this.scale.pageAlignHorizontally = true;
 		this.scale.pageAlignVertically = true;
 		this.scale.updateLayout(true);
@@ -44,40 +64,36 @@ Level.prototype.preload = function() {
 	// this.game.load.spritesheet("GEMS", "assets/sprites/diamonds32x5.png",
 	// GEM_SIZE, GEM_SIZE);
 	this.game.load.spritesheet("GEMS", "assets/sprites/blocks.png", 81, 82);
+	this.game.load.atlas("EFFECTS", "assets/atlas/effect.png", "assets/atlas/effect.json", Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
+	//this.game.load.atlas("seacreatures", "assets/atlas/seacreatures_json.png", "assets/atlas/seacreatures_json.json", Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 	this.add.plugin(Phaser.Plugin.Debug);
 }
 
 Level.prototype.create = function() {
 
 	this.scene = new ingame(this.game);
-
 	this.game.time.advancedTiming = true;
+	
+	scoreText = this.game.add.text(240, 62, '0', {
+		fontSize : '45px',
+		fill : '#fff'
+	});
+	scoreText.anchor.set(0.5);
 
-	this.scene.fBtnPause.inputEnalbed = true;
-	this.scene.fBtnPause.events.onInputDown.add(pauseGame, this);
-	this.scene.fBtnPause.visible = true;
-
-	this.scene.fBtnResume.inputEnabled = true;
-	this.scene.fBtnResume.events.onInputDown.add(resumeGame, this);
-	this.scene.fBtnResume.visible = false;
-
-	this.groupMessageUI = this.game.add.group();
-	this.groupMessageUI.add(this.scene.fMessageReady);
-	this.groupMessageUI.add(this.scene.fMessageGo);
-	this.groupMessageUI.add(this.scene.fMessageTimeOver);
-
-	this.scene.fMessageReady.visible = false;
-	this.scene.fMessageGo.visible = false;
-	this.scene.fMessageTimeOver.visible = false;
-
-	initUI();
+	remainTimeText = this.game.add.text(230, 705, LevelPreferences.GAME_LIMIT_TIME.toFixed(2), {
+		fontSize : '20px',
+		fill : '#000'
+	});
+	remainTimeText.anchor.set(0.5);	
+	
+	this.initUI();
 	// fill the screen with as many gems as possible
 	spawnBoard();
 
-	var tempMask = this.game.add.graphics(this.scene.fGameBoard.x, this.scene.fGameBoard.y);
+	// block masking
+	var tempMask = this.game.add.graphics(this.scene.fImg_game_board.x, this.scene.fImg_game_board.y);
 	tempMask.beginFill(0xffffff);
-	tempMask.drawRect(0, 0, this.scene.fGameBoard.width, this.scene.fGameBoard.height);
-	
+	tempMask.drawRect(0, 0, this.scene.fImg_game_board.width, this.scene.fImg_game_board.height);
 	gems.mask = tempMask;
 	
 	// currently selected gem starting position. used to stop player form moving
@@ -104,59 +120,33 @@ Level.prototype.render = function() {
 }
 
 Level.prototype.update = function() {
+	
 	if (isPause == true) {
 		return;
 	}
 
 	var currentTimestamp = (new Date()).getTime();
-	remainSecond = GAME_LIMIT_TIME
-			- ((currentTimestamp - startTimestamp) / 1000);
+	remainSecond = LevelPreferences.GAME_LIMIT_TIME - ((currentTimestamp - startTimestamp) / 1000);
 
 	if (remainSecond <= 0) {
 		allowInput = false;
 		remainTimeText.text = 0.00 + "";
-		// remainTimeText.text = 'reaminTime: ' + 0.00 + " / " + (function() {
-		// if (game.scale.isGamePortrait) {
-		// return "True";
-		// } else {
-		// return "False";
-		// }
-		// }());
-		this.game.world.bringToTop(this.groupMessageUI);
-		this.scene.fMessageTimeOver.visible = true;
+		
+		this.playAnimations("animTimeOver");
+		
+//		this.game.world.bringToTop(this.groupMessageUI);
+//		this.scene.fImg_game_message_time_over.visible = true;
+//		this.scene.fImg_time_gauge_body.visible = false;
+//		this.scene.fImg_time_gauge_tail.visible = false;
+//		this.scene.fImg_time_gauge_head.visible = false;
+		
 	} else {
+		this.scene.fImg_time_gauge_body.scale.x = (LevelPreferences.GAUGE_TIMER_BODY_INITIAL_SCALE / LevelPreferences.GAME_LIMIT_TIME * remainSecond);
+		this.scene.fImg_time_gauge_tail.x = this.scene.fImg_time_gauge_body.x + this.scene.fImg_time_gauge_body.width;
+		
 		remainTimeText.text = remainSecond.toFixed(2) + "";
-		// remainTimeText.text = 'reaminTime: ' + remainSecond.toFixed(2) + " /
-		// " + (function() {
-		// if (game.scale.isGamePortrait) {
-		// return "True";
-		// } else {
-		// return "False";
-		// }
-		// }());;
 	}
 }
-
-var BLOCK_TYPE = [ "ani", "ari", "blue", "lucy", "micky", "mongyi", "pinky",
-		"mao", "bomb" ];
-
-var GAME_WIDTH = 480;
-var GAME_HEIGHT = 800;
-
-var INGAME_UI_TOP_OFFSET = 175;
-var INGAME_UI_LEFT_OFFSET = -8;
-var GEM_SIZE = 68;
-var GEM_SPACING = 0;
-var GEM_SIZE_SPACED = GEM_SIZE + GEM_SPACING;
-var BOARD_COLS;
-var BOARD_ROWS;
-var MATCH_MIN = 3; // min number of same color gems required in a row to be
-					// considered a match
-var SCORE_PER_GEM = 10;
-
-var GEM_REFILL_DURATION_TIME = 50;
-var GAME_LIMIT_TIME = 60;
-var GAME_TIMER_DURATION_MS = 250;
 
 // UI Component
 var scoreText;
@@ -177,7 +167,6 @@ var pauseTimestamp = 0;
 var remainSecond = 0;
 
 var isPause = false;
-
 var isFirstPortrait = true;
 
 function handleIncorrect() {
@@ -196,29 +185,52 @@ function handleCorrect() {
 	}
 }
 
-function pauseGame() {
+Level.prototype.pauseGame = function() {
 	pauseTimestamp = (new Date()).getTime();
 	allowInput = false;
 	isPause = true;
+	
+	var popupGroup = this.game.add.group();
+	popupGroup.add(this.scene.fPopupPause);
+	gems.bringToTop(popupGroup);
 
-	imgBtnPause.visible = false;
-	imgBtnResume.visible = true;
+	this.scene.fPopupPause.visible = true;
+	
+	this.scene.fBtn_game_pause.visible = false;
+	this.scene.fBtn_game_resume.visible = true;
 }
 
-function resumeGame() {
+Level.prototype.resumeGame = function () {
+	
+	this.scene.fPopupPause.visible = false;
+	
 	var currentTimestamp = (new Date()).getTime();
 	var offsetTimestampFromPause = currentTimestamp - pauseTimestamp;
 	startTimestamp += offsetTimestampFromPause;
-
-	console.log("[resumeGame] remainSecond(" + remainSecond.toFixed(2)
-			+ "), currentTimestamp(" + currentTimestamp + ")");
-
+	
 	isPause = false;
 	allowInput = true;
 
-	imgBtnPause.visible = true;
-	imgBtnResume.visible = false;
+	this.scene.fBtn_game_pause.visible = true;
+	this.scene.fBtn_game_resume.visible = false;
 }
+
+Level.prototype.restartGame = function() {
+	
+	this.initUI();
+	
+	this.resumeGame();
+	
+	remainSecond = LevelPreferences.GAME_LIMIT_TIME;
+	gameScore = 0;
+	scoreText.text = gameScore + "";
+	startTimestamp = (new Date()).getTime();
+}
+
+Level.prototype.exitGame = function() {
+	this.playAnimations("animTimeOver");
+}
+
 
 function gofull(pointer) {
 	if ((pointer.x < 0 || pointer.x > 50)
@@ -252,7 +264,7 @@ function releaseGem() {
 	var dropGemDuration = dropGems();
 
 	// delay board refilling until all existing gems have dropped down
-	this.game.time.events.add(dropGemDuration * GEM_REFILL_DURATION_TIME,
+	this.game.time.events.add(dropGemDuration * LevelPreferences.GEM_REFILL_DURATION_TIME,
 			refillBoard);
 
 	allowInput = false;
@@ -310,28 +322,86 @@ function slideGem(pointer, x, y) {
 	}
 }
 
-function initUI() {
-	scoreText = this.game.add.text(240, 62, '0', {
-		fontSize : '45px',
-		fill : '#fff'
-	});
-	scoreText.anchor.set(0.5);
-	remainTimeText = this.game.add.text(230, 705, GAME_LIMIT_TIME.toFixed(2), {
-		fontSize : '20px',
-		fill : '#fff'
-	});
-	remainTimeText.anchor.set(0.5);
+Level.prototype.initUI = function () {
+	
+	this.scene.fGroupAnimTimeOver.visible = false;
+	
+	this.scene.fBtn_game_pause.inputEnalbed = true;
+	this.scene.fBtn_game_pause.events.onInputDown.add(this.pauseGame, this);
+	this.scene.fBtn_game_pause.visible = true;
+
+	this.scene.fBtn_game_resume.inputEnabled = true;
+	this.scene.fBtn_game_resume.events.onInputDown.add(this.resumeGame, this);
+	this.scene.fBtn_game_resume.visible = false;
+
+	// Popup Event Handler
+	this.scene.fBtn_popup_resume.inputEnabled = true;
+	this.scene.fBtn_popup_resume.events.onInputDown.add(this.resumeGame, this);
+	
+	this.scene.fBtn_popup_restart.inputEnabled = true;
+	this.scene.fBtn_popup_restart.events.onInputDown.add(this.restartGame, this);
+	
+	this.scene.fBtn_popup_go_main.inputEnabled = true;
+	this.scene.fBtn_popup_go_main.events.onInputDown.add(this.exitGame, this);
+	
+	this.groupMessageUI = this.game.add.group();
+	this.groupMessageUI.add(this.scene.fImg_game_message_ready);
+	this.groupMessageUI.add(this.scene.fImg_game_message_go);
+	this.groupMessageUI.add(this.scene.fImg_game_message_time_over);
+
+	this.scene.fImg_game_message_ready.visible = false;
+	this.scene.fImg_game_message_go.visible = false;
+	this.scene.fImg_game_message_time_over.visible = false;
+	
+	this.scene.fImg_time_gauge_body.visible = true;
+	this.scene.fImg_time_gauge_tail.visible = true;
+	this.scene.fImg_time_gauge_head.visible = true;
+
+	this.scene.fPopupPause.visible = false;
+}
+
+var currentPlayingAnimations = {};
+Level.prototype.playAnimations = function(inName, inPosX, inPosY, inCallback) {
+	
+	if (currentPlayingAnimations.hasOwnProperty(inName) && currentPlayingAnimations[inName] == true) {
+		return;
+	}
+	
+	if (inName === "animTimeOver") {
+		
+		var timeOverAnim = this.game.add.sprite(174, 295, "EFFECTS");
+		timeOverAnim.animations.add("timeover", Phaser.Animation.generateFrameNames("animTimeOver", 0, 42, "", 4), 30, false);
+		timeOverAnim.animations.play("timeover");
+		currentPlayingAnimations[inName] = true;	
+		timeOverAnim.animations.currentAnim.onComplete.add(() => {
+			this.pauseGame();
+			currentPlayingAnimations[inName] = false;
+			timeOverAnim.destroy();
+		});
+	}
+	
+	if (inName == "animBlockMatch") {
+		var blockMatchAnim = game.add.sprite(getGemCoord(inPosX, true), getGemCoord(inPosY, false), "EFFECTS");
+		blockMatchAnim.anchor.set(0.4, 0.6);
+		blockMatchAnim.animations.add("blockmatch", Phaser.Animation.generateFrameNames("animBlockMatchEffect", 0, 5, "", 4), 30, false);
+		blockMatchAnim.animations.play("blockmatch");
+		
+		blockMatchAnim.animations.currentAnim.onComplete.add(() => {
+			blockMatchAnim.destroy();
+		});
+	}
 }
 
 // fill the screen with as many gems as possible
 function spawnBoard() {
 
-	BOARD_COLS = BOARD_ROWS = 7;
+	//LevelPreferences.BOARD_COLS = 7;
+	//LevelPreferences.BOARD_ROWS = 7;
 
 	gems = this.game.add.group();
 
-	for (var i = 0; i < BOARD_COLS; i++) {
-		for (var j = 0; j < BOARD_ROWS; j++) {
+	for (var i = 0; i < LevelPreferences.BOARD_COLS; i++) {
+		for (var j = 0; j < LevelPreferences.BOARD_ROWS; j++) {
 			var gem = gems.create(getGemCoord(i, true), getGemCoord(j, false),
 					"GEMS");
 			gem.name = 'gem' + i.toString() + 'x' + j.toString();
@@ -347,7 +417,7 @@ function spawnBoard() {
 		var dropGemDuration = dropGems();
 
 		// delay board refilling until all existing gems have dropped down
-		this.game.time.events.add(dropGemDuration * GEM_REFILL_DURATION_TIME,
+		this.game.time.events.add(dropGemDuration * LevelPreferences.GEM_REFILL_DURATION_TIME,
 				refillBoard);
 
 		allowInput = false;
@@ -358,8 +428,6 @@ function spawnBoard() {
 }
 
 function checkAllMatchedBlocks() {
-	var willKillGems = [];
-
 	gems.forEach(function(currentGem) {
 		if (currentGem.alive) {
 			countUp = countSameColorGems(currentGem, 0, -1);
@@ -370,12 +438,12 @@ function checkAllMatchedBlocks() {
 			countHoriz = countLeft + countRight + 1;
 			countVert = countUp + countDown + 1;
 
-			if (countVert >= MATCH_MIN) {
+			if (countVert >= LevelPreferences.MATCH_MIN) {
 				killGemRange(currentGem.posX, currentGem.posY - countUp,
 						currentGem.posX, currentGem.posY + countDown);
 			}
 
-			if (countHoriz >= MATCH_MIN) {
+			if (countHoriz >= LevelPreferences.MATCH_MIN) {
 				killGemRange(currentGem.posX - countLeft, currentGem.posY,
 						currentGem.posX + countRight, currentGem.posY);
 			}
@@ -407,15 +475,15 @@ function getGem(posX, posY) {
 // convert world coordinates to board position
 function getGemPos(coordinate, isX) {
 
-	return Math.floor((coordinate - (isX ? INGAME_UI_LEFT_OFFSET
-			: INGAME_UI_TOP_OFFSET))
-			/ GEM_SIZE_SPACED);
+	return Math.floor((coordinate - (isX ? LevelPreferences.INGAME_UI_LEFT_OFFSET
+			: LevelPreferences.INGAME_UI_TOP_OFFSET))
+			/ LevelPreferences.GEM_SIZE_SPACED);
 
 }
 
 function getGemCoord(inPos, isX) {
-	return (inPos * GEM_SIZE_SPACED)
-			+ (isX ? INGAME_UI_LEFT_OFFSET : INGAME_UI_TOP_OFFSET);
+	return (inPos * LevelPreferences.GEM_SIZE_SPACED)
+			+ (isX ? LevelPreferences.INGAME_UI_LEFT_OFFSET : LevelPreferences.INGAME_UI_TOP_OFFSET);
 }
 
 // set the position on the board for a gem
@@ -430,7 +498,7 @@ function setGemPos(gem, posX, posY) {
 // each position on the board has a unique id
 function calcGemId(posX, posY) {
 
-	return posX + posY * BOARD_COLS;
+	return posX + posY * LevelPreferences.BOARD_COLS;
 
 }
 
@@ -452,8 +520,8 @@ function randomizeGemColor(gem) {
 // gems can only be moved 1 square up/down or left/right
 function checkIfGemCanBeMovedHere(fromPosX, fromPosY, toPosX, toPosY) {
 
-	if (toPosX < 0 || toPosX >= BOARD_COLS || toPosY < 0
-			|| toPosY >= BOARD_ROWS) {
+	if (toPosX < 0 || toPosX >= LevelPreferences.BOARD_COLS || toPosY < 0
+			|| toPosY >= LevelPreferences.BOARD_ROWS) {
 		return false;
 	}
 
@@ -479,7 +547,7 @@ function countSameColorGems(startGem, moveX, moveY) {
 	var curY = startGem.posY + moveY;
 	var count = 0;
 
-	while (curX >= 0 && curY >= 0 && curX < BOARD_COLS && curY < BOARD_ROWS
+	while (curX >= 0 && curY >= 0 && curX < LevelPreferences.BOARD_COLS && curY < LevelPreferences.BOARD_ROWS
 			&& getGemColor(getGem(curX, curY)) === getGemColor(startGem)) {
 		count++;
 		curX += moveX;
@@ -526,13 +594,13 @@ function checkAndKillGemMatches() {
 	var countHoriz = countLeft + countRight + 1;
 	var countVert = countUp + countDown + 1;
 
-	if (countVert >= MATCH_MIN) {
+	if (countVert >= LevelPreferences.MATCH_MIN) {
 		killGemRange(selectedGem.posX, selectedGem.posY - countUp,
 				selectedGem.posX, selectedGem.posY + countDown);
 		canKill = true;
 	}
 
-	if (countHoriz >= MATCH_MIN) {
+	if (countHoriz >= LevelPreferences.MATCH_MIN) {
 		killGemRange(selectedGem.posX - countLeft, selectedGem.posY,
 				selectedGem.posX + countRight, selectedGem.posY);
 		canKill = true;
@@ -548,13 +616,13 @@ function checkAndKillGemMatches() {
 	countHoriz = countLeft + countRight + 1;
 	countVert = countUp + countDown + 1;
 
-	if (countVert >= MATCH_MIN) {
+	if (countVert >= LevelPreferences.MATCH_MIN) {
 		killGemRange(tempShiftedGem.posX, tempShiftedGem.posY - countUp,
 				tempShiftedGem.posX, tempShiftedGem.posY + countDown);
 		canKill = true;
 	}
 
-	if (countHoriz >= MATCH_MIN) {
+	if (countHoriz >= LevelPreferences.MATCH_MIN) {
 		killGemRange(tempShiftedGem.posX - countLeft, tempShiftedGem.posY,
 				tempShiftedGem.posX + countRight, tempShiftedGem.posY);
 		canKill = true;
@@ -590,13 +658,16 @@ function checkAndKillGemMatches() {
 // kill all gems from a starting position to an end position
 function killGemRange(fromX, fromY, toX, toY) {
 
-	fromX = Phaser.Math.clamp(fromX, 0, BOARD_COLS - 1);
-	fromY = Phaser.Math.clamp(fromY, 0, BOARD_ROWS - 1);
-	toX = Phaser.Math.clamp(toX, 0, BOARD_COLS - 1);
-	toY = Phaser.Math.clamp(toY, 0, BOARD_ROWS - 1);
+	fromX = Phaser.Math.clamp(fromX, 0, LevelPreferences.BOARD_COLS - 1);
+	fromY = Phaser.Math.clamp(fromY, 0, LevelPreferences.BOARD_ROWS - 1);
+	toX = Phaser.Math.clamp(toX, 0, LevelPreferences.BOARD_COLS - 1);
+	toY = Phaser.Math.clamp(toY, 0, LevelPreferences.BOARD_ROWS - 1);
 
 	for (var i = fromX; i <= toX; i++) {
 		for (var j = fromY; j <= toY; j++) {
+			proto.playAnimations('animBlockMatch', i, j, () => {
+				
+			});
 			var gem = getGem(i, j);
 			gem.kill();
 		}
@@ -611,7 +682,7 @@ function removeKilledGems() {
 		if (!gem.alive) {
 			removedCount++;
 			setGemPos(gem, -1, -1);
-			gameScore = gameScore + SCORE_PER_GEM;
+			gameScore = gameScore + LevelPreferences.SCORE_PER_GEM;
 			scoreText.text = gameScore;
 		}
 	});
@@ -632,7 +703,7 @@ function tweenGemPos(gem, newPosX, newPosY, durationMultiplier, inCallback) {
 	return this.game.add.tween(gem).to({
 		x : getGemCoord(newPosX, true),
 		y : getGemCoord(newPosY, false)
-	}, 100 * durationMultiplier, Phaser.Easing.Linear.None, true);
+	}, LevelPreferences.GEM_TWEEN_SPEED/*100 * durationMultiplier*/, Phaser.Easing.Linear.None, true);
 
 }
 
@@ -641,10 +712,10 @@ function dropGems() {
 
 	var dropRowCountMax = 0;
 
-	for (var i = 0; i < BOARD_COLS; i++) {
+	for (var i = 0; i < LevelPreferences.BOARD_COLS; i++) {
 		var dropRowCount = 0;
 
-		for (var j = BOARD_ROWS - 1; j >= 0; j--) {
+		for (var j = LevelPreferences.BOARD_ROWS - 1; j >= 0; j--) {
 			var gem = getGem(i, j);
 
 			if (gem === null) {
@@ -668,10 +739,10 @@ function refillBoard() {
 
 	var maxGemsMissingFromCol = 0;
 
-	for (var i = 0; i < BOARD_COLS; i++) {
+	for (var i = 0; i < LevelPreferences.BOARD_COLS; i++) {
 		var gemsMissingFromCol = 0;
 
-		for (var j = BOARD_ROWS - 1; j >= 0; j--) {
+		for (var j = LevelPreferences.BOARD_ROWS - 1; j >= 0; j--) {
 			var gem = getGem(i, j);
 
 			if (gem === null) {
@@ -699,7 +770,7 @@ function boardRefilled() {
 		var dropGemDuration = dropGems();
 
 		// delay board refilling until all existing gems have dropped down
-		this.game.time.events.add(dropGemDuration * GEM_REFILL_DURATION_TIME,
+		this.game.time.events.add(dropGemDuration * LevelPreferences.GEM_REFILL_DURATION_TIME,
 				refillBoard);
 
 		allowInput = false;
@@ -710,3 +781,4 @@ function boardRefilled() {
 		allowInput = true;
 	}
 }
+
