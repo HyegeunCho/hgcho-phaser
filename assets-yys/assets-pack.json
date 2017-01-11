@@ -1,0 +1,83 @@
+{
+    "start": [
+        {
+            "type": "atlas",
+            "key": "uiAtlas",
+            "textureURL": "assets-yys/start/UI/uiAtlas.png",
+            "atlasURL": "assets-yys/start/UI/uiAtlas.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "script",
+            "key": "startScene",
+            "url": "assets-yys/start/scene/startScene.js"
+        },
+        {
+            "type": "spritesheet",
+            "key": "block",
+            "url": "assets-yys/start/block/blocks.png",
+            "frameWidth": 0,
+            "frameHeight": 0,
+            "frameMax": -1,
+            "margin": 0,
+            "spacing": 0
+        },
+        {
+            "type": "atlas",
+            "key": "ingame",
+            "textureURL": "assets-yys/start/block/ingame.png",
+            "atlasURL": "assets-yys/start/block/touchedBlock.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "effect",
+            "textureURL": "assets-yys/start/effect/effect.png",
+            "atlasURL": "assets-yys/start/effect/effect.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "bitmapFont",
+            "key": "comboFont",
+            "textureURL": "assets-yys/start/font/comboFont.png",
+            "atlasURL": "assets-yys/start/font/comboFont.xml",
+            "xSpacing": 0,
+            "ySpacing": 0
+        },
+        {
+            "type": "bitmapFont",
+            "key": "textScore",
+            "textureURL": "assets-yys/start/font/textScoreFont.png",
+            "atlasURL": "assets-yys/start/font/textScoreFont.xml",
+            "xSpacing": 0,
+            "ySpacing": 0
+        }
+    ],
+    "preload": [
+        {
+            "type": "atlas",
+            "key": "preImage",
+            "textureURL": "assets-yys/preImage/preImage.png",
+            "atlasURL": "assets-yys/preImage/preImage.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "image",
+            "key": "preBackGound",
+            "url": "assets-yys/preImage/preBackGound.png",
+            "overwrite": false
+        },
+        {
+            "type": "script",
+            "key": "preBackGround",
+            "url": "assets-yys/preImage/preBackGround.js"
+        }
+    ],
+    "meta": {
+        "generated": "1483868866179",
+        "app": "Phaser Editor",
+        "url": "http://phasereditor.boniatillo.com",
+        "version": "1.0",
+        "copyright": "Arian Fornaris (c) 2015,2016"
+    }
+}

@@ -1,0 +1,130 @@
+{
+  "settings": {
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false
+  },
+  "world": {
+    "type": "group",
+    "id": "8c1a1426-e244-4ab7-929d-cbb4fc628ae2",
+    "info": {
+      "editorName": "startSecen",
+      "children": [
+        {
+          "type": "atlas-sprite",
+          "id": "224ccc44-9ee0-426a-8c16-ec53edd20bd1",
+          "asset": "0",
+          "info": {"editorName": "bg_top_png"}
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "a60cf094-fc7d-4eca-b5df-a01d9eb37083",
+          "asset": "1",
+          "info": {
+            "editorName": "game_board_png",
+            "y": 181
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "9fafbc52-4417-44f7-b423-321eca6fe512",
+          "asset": "2",
+          "info": {
+            "editorName": "bg_bottom_png",
+            "editorPick": false,
+            "y": 654
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "365212db-c766-4713-ab8e-991916fe18e1",
+          "asset": "3",
+          "info": {
+            "editorName": "UITimeGauge_body_png",
+            "x": 56,
+            "y": 703,
+            "scale.x": 0.8399999712077841,
+            "scale.y": 1.0626088119527406
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "5bcc3e33-1d23-4cd0-a728-0766332b89fe",
+          "asset": "4",
+          "info": {
+            "editorName": "UITimeGauge_header_png",
+            "x": 47,
+            "y": 703,
+            "scale.y": 1.06
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "de859d02-ddc2-4bce-9bc4-8c642c29ff04",
+          "asset": "5",
+          "info": {
+            "editorName": "UITimeGauge_tail_png",
+            "x": 433,
+            "y": 703,
+            "scale.y": 1.06
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "3816fc40-704e-4531-afc2-4a8ae9f6e401",
+          "asset": "6",
+          "info": {
+            "editorName": "combo0011_png",
+            "x": 256,
+            "y": 88
+          }
+        }
+      ]
+    }
+  },
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "bg_top.png"
+    },
+    "1": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_board.png"
+    },
+    "2": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "bg_bottom.png"
+    },
+    "3": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "UITimeGauge_body.png"
+    },
+    "4": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "UITimeGauge_header.png"
+    },
+    "5": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "UITimeGauge_tail.png"
+    },
+    "6": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "combo0011.png"
+    }
+  }
+}

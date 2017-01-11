@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "bg_bottom.png",
+	"frame": {"x":775,"y":360,"w":480,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":142},
+	"sourceSize": {"w":480,"h":142}
+},
+{
+	"filename": "bg_top.png",
+	"frame": {"x":768,"y":1,"w":480,"h":182},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":182},
+	"sourceSize": {"w":480,"h":182}
+},
+{
+	"filename": "combo0011.png",
+	"frame": {"x":483,"y":386,"w":146,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":7,"w":146,"h":60},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "game_board.png",
+	"frame": {"x":1,"y":1,"w":480,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":476},
+	"sourceSize": {"w":480,"h":476}
+},
+{
+	"filename": "game_message0001.png",
+	"frame": {"x":483,"y":1,"w":283,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":283,"h":191},
+	"sourceSize": {"w":371,"h":194}
+},
+{
+	"filename": "game_message0002.png",
+	"frame": {"x":483,"y":194,"w":290,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":290,"h":190},
+	"sourceSize": {"w":371,"h":194}
+},
+{
+	"filename": "game_message0003.png",
+	"frame": {"x":775,"y":185,"w":306,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":0,"w":306,"h":173},
+	"sourceSize": {"w":371,"h":194}
+},
+{
+	"filename": "UITimeGauge_body.png",
+	"frame": {"x":1,"y":479,"w":450,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":23},
+	"sourceSize": {"w":450,"h":23}
+},
+{
+	"filename": "UITimeGauge_header.png",
+	"frame": {"x":453,"y":479,"w":10,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":23},
+	"sourceSize": {"w":10,"h":23}
+},
+{
+	"filename": "UITimeGauge_tail.png",
+	"frame": {"x":465,"y":479,"w":10,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":23},
+	"sourceSize": {"w":10,"h":23}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "uiAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":1256,"h":503},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6d532c3de4646b1402ccfe2b5e46ce53:e60198803cb8c9b5949d6e65256b4aa9:9dc5e028986bbda5d66c627c8901dc2a$"
+}
+}

@@ -11,7 +11,10 @@ handlers:
   static_dir: lib
 - url: /assets
   static_dir: assets
-
+- url: /assets-yys
+  static_dir: assets-yys
+- url: /js-yys
+  static_dir: js-yys
 - url: /phaser-sdk
   static_dir: phaser-sdk
 
