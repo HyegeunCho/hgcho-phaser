@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "combo0001.png",
+	"frame": {"x":1,"y":139,"w":57,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0002.png",
+	"frame": {"x":61,"y":70,"w":51,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":51,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0003.png",
+	"frame": {"x":1,"y":1,"w":58,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0004.png",
+	"frame": {"x":61,"y":277,"w":56,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0005.png",
+	"frame": {"x":61,"y":1,"w":56,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0006.png",
+	"frame": {"x":1,"y":70,"w":58,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0007.png",
+	"frame": {"x":1,"y":208,"w":57,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0008.png",
+	"frame": {"x":1,"y":277,"w":58,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":58,"h":66},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0009.png",
+	"frame": {"x":60,"y":139,"w":57,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":67},
+	"sourceSize": {"w":146,"h":67}
+},
+{
+	"filename": "combo0010.png",
+	"frame": {"x":60,"y":208,"w":57,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":67},
+	"sourceSize": {"w":146,"h":67}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "comboFont.png",
+	"format": "RGBA8888",
+	"size": {"w":118,"h":345},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8032607c9aa613727adb0adfddc7b16d:2ba0e6e0347feb87c0c3574298e277c0:eb3dd27b69618057ea90a8339b99f1a3$"
+}
+}

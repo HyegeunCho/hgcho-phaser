@@ -1,0 +1,51 @@
+{
+  "settings": {
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false
+  },
+  "world": {
+    "type": "group",
+    "id": "db03d7b5-3849-422c-86fa-38237091ad10",
+    "info": {
+      "editorName": "preBackGround",
+      "children": [
+        {
+          "type": "atlas-sprite",
+          "id": "1f412bf0-e061-44e4-950b-e993892fcef5",
+          "asset": "0",
+          "info": {
+            "editorName": "preBackGound_png",
+            "scale.x": 0.9127847483458625,
+            "scale.y": 0.8339597286371081
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "e3ae352d-7226-4290-9d95-928842772924",
+          "asset": "1",
+          "info": {
+            "editorName": "loading0000_png",
+            "x": 155,
+            "y": 451
+          }
+        }
+      ]
+    }
+  },
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "preImage",
+      "sprite": "preBackGound.png"
+    },
+    "1": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "preImage",
+      "sprite": "loading0000.png"
+    }
+  }
+}
