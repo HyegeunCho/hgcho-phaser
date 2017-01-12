@@ -1,21 +1,21 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+    <head>
 
-<meta charset="UTF-8" />
-<meta name=viewport content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <meta name=viewport content="width=device-width, initial-scale=1">
 
-<title>Phaser Editor - Basic</title>
+        <title>Anipang stz-phaser-proto</title>
 
-<script src="lib/phaser.js"></script>
-<script src="js/Main.js"></script>
-<script src="js/Boot.js"></script>
-<script src="js/Preload.js"></script>
-<script src="js/Score.js"></script>
-<script src="js/Start.js"></script>
+        <script src="lib/phaser.js"></script>
+        <script src="js/Main.js"></script>
+        <script src="js/Boot.js"></script>
+        <script src="js/Preload.js"></script>
+        <script src="js/Score.js"></script>
+        <script src="js/Start.js"></script>
 
-<style>
-<style>
+
+        <style>
             body {
                 background: black;
                 margin: 0;
@@ -34,9 +34,98 @@
                 display: none;
             }
         </style>
-</style>
+    </head>
+    
+    <body>
+        <script>
+            var USE_FB_INTEGRATION = false;
 
-</head>
-<body>
-</body>
+            var FB_DATA = {
+                id: '000000',
+                name: 'GUEST',
+                profile: null
+            };
+
+            // This is called with the results from FB.getLoginStatus()
+            function statusChangeCallback(response) {
+                console.log('statusChangeCallback');
+                console.log(response);
+
+                if (response.status === 'connected') {
+                    // Logged into your app and Facebook.
+                    FB.api('/me', {fields:'id,name,picture'}, function(response){
+
+                        if (response.hasOwnProperty('id')) {
+                            FB_DATA['id'] = response['id'];
+                        }
+
+                        if (response.hasOwnProperty('name')) {
+                            FB_DATA['name'] = response['name'];
+                        }
+
+                        if (response.hasOwnProperty('picture')) {
+                            if (response['picture'].hasOwnProperty('data')) {
+                                if (response['picture']['data'].hasOwnProperty('url')) {
+                                    FB_DATA['profile'] = response['picture']['data']['url'];
+                                }
+                            }
+                        }
+                        
+                        console.log(FB_DATA);
+                    });
+
+                    window.START_ANIPANG();
+
+                } else if (response.status === 'not_authorized') {
+                    FB.login(function(response) {
+                        FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                        });
+                    }, {scope: 'public_profile,email'});
+
+                    // The person is logged into Facebook, but not your app.
+                    console.log('Please log into this app.');
+                } else {
+                    FB.login(function(response) {
+                        FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                        });
+                    }, {scope: 'public_profile,email'});
+                    // The person is not logged into Facebook, so we're not sure if they are logged into this app or not.
+                    console.log('Please log into Facebook.');
+                }
+            }
+
+            window.fbAsyncInit = function() {
+
+                console.log("fbAsyncInit");
+                FB.init( {
+                    appId : '1489250797753629',
+                    xfbms : true, 
+                    version : 'v2.8'
+                });
+                
+                FB.AppEvents.logPageView();            
+
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+            };
+
+
+            if (USE_FB_INTEGRATION) {
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+
+                } (document, 'script', 'facebook-jssdk'));    
+            } else {
+                window.START_ANIPANG();
+            }
+            
+        </script>
+    </body>
 </html>

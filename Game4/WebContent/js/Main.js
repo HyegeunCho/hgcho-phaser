@@ -1,4 +1,5 @@
-window.onload = function() {
+window.START_ANIPANG = function()
+{
 	// Create your Phaser game and inject it into an auto-created canvas.
 	// We did it in a window.onload event, but you can do it anywhere (requireJS
 	// load, anonymous function, jQuery dom ready, - whatever floats your boat)
@@ -10,5 +11,5 @@ window.onload = function() {
 	this.game.state.add("Start", Start);
 
 	// Now start the Boot state.
-	this.game.state.start("Boot");
+	this.game.state.start("Boot");    
 };
