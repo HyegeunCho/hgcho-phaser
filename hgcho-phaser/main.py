@@ -40,6 +40,11 @@ class AnipangHandler(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'gemmatch2.html')
         self.response.write(template.render(path, {'datetime': datetime.datetime.now().time()}))        
 
+class AnipangYYSHandler(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'index-yys.html')
+        self.response.write(template.render(path, {'datetime': datetime.datetime.now().time()}))        
+
 class KangHanByulMakerHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'slack_kanghanbyul.html')
@@ -75,18 +80,12 @@ class DrawCallTestHandler(webapp2.RequestHandler):
             , 'autoPlayStopCount': autoPlayStopCount
         }))
         
-class AnipangYYSHandler(webapp2.RequestHandler):
-    def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'index.html')
-        logging.warning(path)
-
-        self.response.write(template.render(path, {}))        
-
 app = webapp2.WSGIApplication([
+    ('/', MainHandler), 
     ('/tutorial', PhaserTutorialHandler),
     ('/gemmatch', PhaserGemmatchHandler),
     ('/slack_kanghanbyul', KangHanByulMakerHandler),
     ('/frame-test', DrawCallTestHandler),
     ('/anipang', AnipangHandler),
-    ('/', AnipangYYSHandler),
+    ('/yys', AnipangYYSHandler),
 ], debug=True)
