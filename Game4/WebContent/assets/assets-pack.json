@@ -71,10 +71,22 @@
             "type": "script",
             "key": "preBackGround",
             "url": "assets/preImage/preBackGround.js"
+        },
+        {
+            "type": "image",
+            "key": "btn_login_facebook",
+            "url": "assets/preImage/btn_login_facebook.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "btn_login_guest",
+            "url": "assets/preImage/btn_login_guest.png",
+            "overwrite": false
         }
     ],
     "meta": {
-        "generated": "1483868866179",
+        "generated": "1484270002360",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",

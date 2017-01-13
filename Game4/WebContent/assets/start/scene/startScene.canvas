@@ -1,7 +1,7 @@
 {
   "settings": {
-    "sceneWidth": 640,
-    "sceneHeight": 360,
+    "sceneWidth": 480,
+    "sceneHeight": 800,
     "generateOnSave": true,
     "enableStepping": false
   },

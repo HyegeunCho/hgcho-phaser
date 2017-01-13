@@ -1,7 +1,7 @@
 {
   "settings": {
-    "sceneWidth": 640,
-    "sceneHeight": 360,
+    "sceneWidth": 490,
+    "sceneHeight": 800,
     "generateOnSave": true,
     "enableStepping": false
   },
@@ -30,6 +30,32 @@
             "x": 155,
             "y": 451
           }
+        },
+        {
+          "type": "button",
+          "id": "9b9b63fd-c992-46de-9a4f-eea80c44cf5e",
+          "asset": "2",
+          "info": {
+            "editorName": "btn_login_facebook",
+            "editorPublic": true,
+            "x": 106,
+            "y": 442,
+            "callback": "this.OnClickBtnLoginFacebook"
+          }
+        },
+        {
+          "type": "button",
+          "id": "f5611e72-59cc-468b-857f-3bfd7b24123b",
+          "asset": "3",
+          "info": {
+            "editorName": "btn_login_guest",
+            "editorPublic": true,
+            "x": 171,
+            "y": 525,
+            "scale.x": 0.5,
+            "scale.y": 0.5,
+            "callback": "this.OnClickBtnGuest"
+          }
         }
       ]
     }
@@ -46,6 +72,16 @@
       "section": "preload",
       "asset": "preImage",
       "sprite": "loading0000.png"
+    },
+    "2": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "btn_login_facebook"
+    },
+    "3": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "btn_login_guest"
     }
   }
 }

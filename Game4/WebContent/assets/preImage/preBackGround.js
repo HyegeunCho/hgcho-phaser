@@ -22,6 +22,16 @@ function preBackGround(aGame, aParent) {
 	
 
 	this.fGroupAnimTimeOver = GroupAnimTimeOver;
+	var btn_login_facebook = this.game.add.button(106, 442, 'btn_login_facebook', this.OnClickBtnLoginFacebook, this, null, null, null, null, this);
+
+	var btn_login_guest = this.game.add.button(171, 525, 'btn_login_guest', this.OnClickBtnGuest, this, null, null, null, null, this);
+	btn_login_guest.scale.setTo(0.5, 0.5);
+
+	 // public fields
+
+	this.fBtn_login_facebook = btn_login_facebook;
+	this.fBtn_login_guest = btn_login_guest;
+
 	/* --- post-init-begin --- */
 
 	// you can insert code here
