@@ -127,6 +127,26 @@ Start.prototype.update = function() {
 	if (remainSecond <= 0) {
 		allowInput = false;
 		remainTimeText.text = 0.00 + "";
+
+        /// 최고 점수 업데이트
+        if (Score.score > USER_DATA['topScore']) {
+            if (USE_FB_INTEGRATION === true) {
+                if (this.IS_SERVER_RUNNING == undefined || this.IS_SERVER_RUNNING == false) {
+                    this.IS_SERVER_RUNNING = true;
+                    $.post('/update/score', JSON.stringify({id:USER_DATA['id'], topScore:Score.score}), function(response) {
+                        var jsonObje = JSON.parse(response);
+                        if (jsonObje.hasOwnProperty('code') == false) {
+                            if (USER_DATA['id'] = jsonObje['id']) {
+                                USER_DATA['topScore'] = jsonObje['topScore'];    
+                            }
+                            this.IS_SERVER_RUNNING = false;
+                        }
+                    });
+                }    
+            }
+        }
+        /// 최고 점수 업데이트
+        
 	
 	} else {
 		this.scene.fImg_time_gauge_body.scale.x = (StartPreferences.GAUGE_TIMER_BODY_INITIAL_SCALE / StartPreferences.GAME_LIMIT_TIME * remainSecond);

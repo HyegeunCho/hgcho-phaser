@@ -18,13 +18,58 @@ import webapp2
 import os #added
 import datetime
 import logging
+import json
 from google.appengine.ext.webapp import template #also added
+from google.appengine.ext import ndb
         
+
+class UserInfo(ndb.Model):
+    userId = ndb.StringProperty()
+    name = ndb.StringProperty()
+    topScore = ndb.IntegerProperty(default=0)
+    date = ndb.DateTimeProperty(auto_now_add=True)
+
+    def dump(self):
+        return json.dumps({'id':self.userId, 'name':self.name, 'topScore':self.topScore, 'date':self.date.strftime("%Y-%m-%d %H:%M:%S")})
+
 class AnipangHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         self.response.write(template.render(path, {}))        
 
+class UserInitHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write("stz-phaser-proto : UserInitHandler")
+
+    def post(self):
+        logging.info(self.request.body)
+        data = json.loads(self.request.body)
+
+        user = ndb.Key(UserInfo, data['id']).get()
+        if user is None:
+            user = UserInfo(id=data['id'], userId=data['id'], name=data['name'])
+            user.put()
+        self.response.out.write(user.dump())
+
+class UpdateScoreHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write("stz-phaser-proto : UpdateScoreHandler")
+
+    def post(self):
+        logging.info(self.request.body)
+        data = json.loads(self.request.body)
+
+        user = ndb.Key(UserInfo, data['id']).get()
+        if user is None:
+            self.response.out.write(json.dumps({'code':404, 'message':"no user data, please init"}))
+        else:
+            user.topScore = data['topScore']
+            user.put()
+            self.response.out.write(user.dump())
+
+
 app = webapp2.WSGIApplication([
-    ('/', AnipangHandler),
+#    ('/', AnipangHandler),
+    ('/init', UserInitHandler),
+    ('/update/score', UpdateScoreHandler),
 ], debug=True)

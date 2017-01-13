@@ -42,6 +42,7 @@ Preload.prototype.WaitUserLogin = function() {
 	this.scene.fBtn_login_facebook.events.onInputDown.add(this.LoginToFacebook);
 	this.scene.fBtn_login_guest.events.onInputDown.add(function(){
 		FB_DATA.init();
+        USER_DATA.init();
 		this.game.state.start("Start");
 	});
 }
@@ -64,8 +65,17 @@ var LoginStatusChangeCallback = function(response) {
                     }
                 }
             }
+
+            $.post("/init", JSON.stringify(FB_DATA), function(data) {
+                var jsonObj = JSON.parse(data);
+            	console.log(jsonObj);
+            	USER_DATA['id'] = jsonObj['id'];
+            	USER_DATA['topScore'] = jsonObj['topScore'];
+            	window.game.state.start("Start");
+            })
+
             //console.log(FB_DATA);
-            window.game.state.start("Start");
+            
 		});
 		return true;
 	} 
