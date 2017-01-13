@@ -48,7 +48,7 @@ Preload.prototype.WaitUserLogin = function() {
 }
 
 var LoginStatusChangeCallback = function(response) {
-	if (response.status == 'connected') {
+	if (response.status === 'connected') {
 		FB.api('/me', {fields:'id,name,picture'}, function(apiResponse) {
 			if (apiResponse.hasOwnProperty('id')) {
                 FB_DATA['id'] = apiResponse['id'];
