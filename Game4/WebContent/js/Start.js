@@ -133,7 +133,7 @@ Start.prototype.update = function() {
             if (USE_FB_INTEGRATION === true) {
                 if (this.IS_SERVER_RUNNING == undefined || this.IS_SERVER_RUNNING == false) {
                     this.IS_SERVER_RUNNING = true;
-                    $.post('/update/score', JSON.stringify({id:USER_DATA['id'], topScore:Score.score}), function(response) {
+                    $.post('http://stz-phaser-proto.appspot.com/update/score', JSON.stringify({id:USER_DATA['id'], topScore:Score.score}), function(response) {
                         var jsonObje = JSON.parse(response);
                         if (jsonObje.hasOwnProperty('code') == false) {
                             if (USER_DATA['id'] = jsonObje['id']) {

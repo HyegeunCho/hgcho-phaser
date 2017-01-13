@@ -49,6 +49,7 @@ class UserInitHandler(webapp2.RequestHandler):
         if user is None:
             user = UserInfo(id=data['id'], userId=data['id'], name=data['name'])
             user.put()
+        self.response.headers.add_header("Access-Control-Allow-Origin", "*")
         self.response.out.write(user.dump())
 
 class UpdateScoreHandler(webapp2.RequestHandler):
@@ -60,6 +61,8 @@ class UpdateScoreHandler(webapp2.RequestHandler):
         data = json.loads(self.request.body)
 
         user = ndb.Key(UserInfo, data['id']).get()
+
+        self.response.headers.add_header("Access-Control-Allow-Origin", "*")
         if user is None:
             self.response.out.write(json.dumps({'code':404, 'message':"no user data, please init"}))
         else:

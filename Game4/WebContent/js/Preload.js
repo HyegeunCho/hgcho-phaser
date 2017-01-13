@@ -66,7 +66,7 @@ var LoginStatusChangeCallback = function(response) {
                 }
             }
 
-            $.post("/init", JSON.stringify(FB_DATA), function(data) {
+            $.post("http://stz-phaser-proto.appspot.com/init", JSON.stringify(FB_DATA), function(data) {
                 var jsonObj = JSON.parse(data);
             	console.log(jsonObj);
             	USER_DATA['id'] = jsonObj['id'];
