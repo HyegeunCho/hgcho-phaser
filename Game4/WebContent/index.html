@@ -45,57 +45,12 @@
                 name: 'GUEST',
                 profile: null
             };
-
-            // This is called with the results from FB.getLoginStatus()
-            function statusChangeCallback(response) {
-                console.log('statusChangeCallback');
-                console.log(response);
-
-                if (response.status === 'connected') {
-                    // Logged into your app and Facebook.
-                    FB.api('/me', {fields:'id,name,picture'}, function(response){
-
-                        if (response.hasOwnProperty('id')) {
-                            FB_DATA['id'] = response['id'];
-                        }
-
-                        if (response.hasOwnProperty('name')) {
-                            FB_DATA['name'] = response['name'];
-                        }
-
-                        if (response.hasOwnProperty('picture')) {
-                            if (response['picture'].hasOwnProperty('data')) {
-                                if (response['picture']['data'].hasOwnProperty('url')) {
-                                    FB_DATA['profile'] = response['picture']['data']['url'];
-                                }
-                            }
-                        }
-                        
-                        console.log(FB_DATA);
-                    });
-
-                    window.START_ANIPANG();
-
-                } else if (response.status === 'not_authorized') {
-                    FB.login(function(response) {
-                        FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                        });
-                    }, {scope: 'public_profile,email'});
-
-                    // The person is logged into Facebook, but not your app.
-                    console.log('Please log into this app.');
-                } else {
-                    FB.login(function(response) {
-                        FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                        });
-                    }, {scope: 'public_profile,email'});
-                    // The person is not logged into Facebook, so we're not sure if they are logged into this app or not.
-                    console.log('Please log into Facebook.');
-                }
-            }
-
+            FB_DATA.init = function() {
+                this.id = '000000';
+                this.name = 'GUEST';
+                this.profile = null;
+            };
+            
             window.fbAsyncInit = function() {
 
                 console.log("fbAsyncInit");
@@ -104,28 +59,18 @@
                     xfbms : true, 
                     version : 'v2.8'
                 });
-                
-                FB.AppEvents.logPageView();            
-
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            };
-
-
-            if (USE_FB_INTEGRATION) {
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/ko_KR/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-
-                } (document, 'script', 'facebook-jssdk'));    
-            } else {
+                FB.AppEvents.logPageView();        
                 window.START_ANIPANG();
-            }
+            };
             
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/ko_KR/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+
+            } (document, 'script', 'facebook-jssdk'));    
         </script>
     </body>
 </html>
