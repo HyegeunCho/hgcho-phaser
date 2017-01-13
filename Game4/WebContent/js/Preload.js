@@ -81,11 +81,17 @@ Preload.prototype.LoginToFacebook = function() {
 };
 
 Preload.prototype.create = function() {
+	
+	if (USE_FB_INTEGRATION == true) {
+		//this.WaitUserLogin();
+		FB.getLoginStatus(function(response) {
+			if (LoginStatusChangeCallback(response) === false) {
+				this.WaitUserLogin();
+			}
+		});		
+	} else {
+		FB_DATA.init();
+		this.game.state.start("Start");
+	}
 
-	//this.WaitUserLogin();
-	FB.getLoginStatus(function(response) {
-		if (LoginStatusChangeCallback(response) === false) {
-			this.WaitUserLogin();
-		}
-	});
 };

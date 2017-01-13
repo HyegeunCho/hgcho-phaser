@@ -63,14 +63,19 @@
                 window.START_ANIPANG();
             };
             
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/ko_KR/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
+            if (USE_FB_INTEGRATION == true) {
+            	(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
 
-            } (document, 'script', 'facebook-jssdk'));    
+                } (document, 'script', 'facebook-jssdk'));	
+            } else {
+            	window.START_ANIPANG();
+            }
+                
         </script>
     </body>
 </html>

@@ -47,8 +47,11 @@ var proto = Object.create(Phaser.State);
 Start.prototype = proto;
 
 Start.prototype.preload = function() {
-	this.game.load.crossOrigin = "Anonymous";
-	this.game.load.image('myProfileImage', FB_DATA['profile']);
+	if (FB_DATA != null) {
+		this.game.load.crossOrigin = "Anonymous";
+		this.game.load.image('myProfileImage', FB_DATA['profile']);	
+	}
+	
 }
 
 Start.prototype.create = function() {
@@ -61,7 +64,9 @@ Start.prototype.create = function() {
 //		fill : '#fff'
 //	});
 	
-	myProfileImage = this.game.add.image(36, 33, 'myProfileImage');
+	if (FB_DATA != null) {
+		myProfileImage = this.game.add.image(36, 33, 'myProfileImage');	
+	}
 	
 	scoreText = this.game.add.bitmapText(240, 70, 'textScore', '0', 30);
 	scoreText.anchor.set(0.5);
