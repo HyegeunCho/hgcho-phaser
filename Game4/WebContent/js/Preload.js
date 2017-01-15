@@ -26,7 +26,7 @@ Preload.prototype.preload = function() {
 	this.game.load.atlas("EFFECTS", "assets/start/effect/effect.png", "assets/start/effect/effect.json", Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 	this.game.load.bitmapFont('comboFont', 'assets/start/font/comboFont.png', 'assets/start/font/comboFont.xml');
 	this.game.load.bitmapFont('textScore', 'assets/start/font/textScoreFont.png', 'assets/start/font/textScoreFont.xml');
-	
+	this.game.load.atlas("TXTTOUCHED", "assets/start/UI/txtTounched.png", "assets/start/UI/txtTounched.json", Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 };
 
 Preload.prototype.WaitUserLogin = function() {
@@ -43,7 +43,7 @@ Preload.prototype.WaitUserLogin = function() {
 	this.scene.fBtn_login_guest.events.onInputDown.add(function(){
 		FB_DATA.init();
         USER_DATA.init();
-		this.game.state.start("Start");
+		this.game.state.start("Menu");
 	});
 }
 
@@ -74,7 +74,7 @@ var LoginStatusChangeCallback = function(response) {
             	window.game.state.start("Start");
             })
 
-            //console.log(FB_DATA);
+           console.log(FB_DATA);
             
 		});
 		return true;
@@ -104,7 +104,7 @@ Preload.prototype.create = function() {
 		});		
 	} else {
 		FB_DATA.init();
-		this.game.state.start("Start");
+		this.game.state.start("Menu");
 	}
 
 };

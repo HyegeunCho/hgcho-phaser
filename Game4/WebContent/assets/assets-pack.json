@@ -51,6 +51,13 @@
             "atlasURL": "assets/start/font/textScoreFont.xml",
             "xSpacing": 0,
             "ySpacing": 0
+        },
+        {
+            "type": "atlas",
+            "key": "txtTouched",
+            "textureURL": "assets/start/UI/txtTounched.png",
+            "atlasURL": "assets/start/UI/txtTounched.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
         }
     ],
     "preload": [
@@ -86,7 +93,7 @@
         }
     ],
     "meta": {
-        "generated": "1484270002360",
+        "generated": "1484453789808",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",

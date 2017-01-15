@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "touched0001.png",
+	"frame": {"x":0,"y":0,"w":413,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":413,"h":101},
+	"sourceSize": {"w":413,"h":101}
+},
+{
+	"filename": "touched0002.png",
+	"frame": {"x":413,"y":0,"w":413,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":413,"h":101},
+	"sourceSize": {"w":413,"h":101}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "txtTounched.png",
+	"format": "RGBA8888",
+	"size": {"w":826,"h":101},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8366566ff77a7f0d236ae862636a7f19:2e54f0e7bb590a24639836011d674c80:63f8e9b1ee3258671c3ae52c59e13e6e$"
+}
+}
