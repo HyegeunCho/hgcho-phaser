@@ -3,6 +3,11 @@ var Score = {
 	score : 0,
 	combo : 0,
 	
+	setInit : function(){
+		this.score = 0;
+		this.combo = 0;
+	},
+
 	getScore : function(){
 		return this.comma(this.score);
 	},
