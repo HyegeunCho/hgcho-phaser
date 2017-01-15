@@ -58,6 +58,13 @@
             "textureURL": "assets/start/UI/txtTounched.png",
             "atlasURL": "assets/start/UI/txtTounched.json",
             "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "settingImage",
+            "textureURL": "assets/start/UI/settingImage.png",
+            "atlasURL": "assets/start/UI/settingImage.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
         }
     ],
     "preload": [
@@ -93,7 +100,7 @@
         }
     ],
     "meta": {
-        "generated": "1484453789808",
+        "generated": "1484455740248",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",

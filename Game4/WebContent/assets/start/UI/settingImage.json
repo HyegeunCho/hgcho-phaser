@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "bg.png",
+	"frame": {"x":0,"y":126,"w":261,"h":266},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":266},
+	"sourceSize": {"w":261,"h":266}
+},
+{
+	"filename": "btnContinue.png",
+	"frame": {"x":0,"y":70,"w":195,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":56},
+	"sourceSize": {"w":195,"h":56}
+},
+{
+	"filename": "btnMainMenu.png",
+	"frame": {"x":195,"y":70,"w":195,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":56},
+	"sourceSize": {"w":195,"h":56}
+},
+{
+	"filename": "btnPause.png",
+	"frame": {"x":0,"y":0,"w":70,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":70},
+	"sourceSize": {"w":70,"h":70}
+},
+{
+	"filename": "btnRestart.png",
+	"frame": {"x":140,"y":0,"w":195,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":56},
+	"sourceSize": {"w":195,"h":56}
+},
+{
+	"filename": "btnStart.png",
+	"frame": {"x":70,"y":0,"w":70,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":70},
+	"sourceSize": {"w":70,"h":70}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "settingImage.png",
+	"format": "RGBA8888",
+	"size": {"w":390,"h":392},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0310765632dc7ccadeba7e884ad6a6a6:8189d1c4a76caf428a81529741199fc1:28c8888d97fa64a629b7221e661e9955$"
+}
+}
