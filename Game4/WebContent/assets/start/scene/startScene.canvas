@@ -184,6 +184,48 @@
               }
             ]
           }
+        },
+        {
+          "type": "group",
+          "id": "82edd05c-99dc-49b0-bb80-f8aab73c7e15",
+          "info": {
+            "editorName": "inGameMessagePopup",
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "0bb4de0e-49d3-474d-9ec5-7d56fa8b54f2",
+                "asset": "13",
+                "info": {
+                  "editorName": "messageReady",
+                  "editorPublic": true,
+                  "x": 90,
+                  "y": 244
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "b60d38a1-5fd5-45ae-b026-e146e490dfaf",
+                "asset": "14",
+                "info": {
+                  "editorName": "messageGo",
+                  "editorPublic": true,
+                  "x": 90,
+                  "y": 244
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "47e8dd72-e5f6-4a0a-a71a-9e80483da555",
+                "asset": "15",
+                "info": {
+                  "editorName": "messageTimeOver",
+                  "editorPublic": true,
+                  "x": 53,
+                  "y": 256
+                }
+              }
+            ]
+          }
         }
       ]
     }
@@ -266,6 +308,24 @@
       "section": "start",
       "asset": "settingImage",
       "sprite": "btnRestart.png"
+    },
+    "13": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_message0001.png"
+    },
+    "14": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_message0002.png"
+    },
+    "15": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_message0003.png"
     }
   }
 }

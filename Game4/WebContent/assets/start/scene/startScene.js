@@ -47,6 +47,14 @@ function startScene(aGame, aParent) {
 
 	var btn_popup_restart = this.game.add.button(143, 302, 'settingImage', this.OnClickBtnPauseRestart, this, 'btnRestart.png', 'btnRestart.png', 'btnRestart.png', 'btnRestart.png', PopupPause);
 
+	var inGameMessagePopup = this.game.add.group(this);
+
+	var messageReady = this.game.add.sprite(90, 244, 'uiAtlas', 'game_message0001.png', inGameMessagePopup);
+
+	var messageGo = this.game.add.sprite(90, 244, 'uiAtlas', 'game_message0002.png', inGameMessagePopup);
+
+	var messageTimeOver = this.game.add.sprite(53, 256, 'uiAtlas', 'game_message0003.png', inGameMessagePopup);
+
 	 // public fields
 
 	this.fBtn_game_pause = btn_game_pause;
@@ -56,6 +64,11 @@ function startScene(aGame, aParent) {
 	this.fBtn_popup_resume = btn_popup_resume;
 	this.fBtn_popup_go_main = btn_popup_go_main;
 	this.fBtn_popup_restart = btn_popup_restart;
+	
+	this.fInGameMessagePopup = inGameMessagePopup;
+	this.fMessageReady = messageReady;
+	this.fMessageGo = messageGo;
+	this.fMessageTimeOver = messageTimeOver;
 
 	/* --- post-init-begin --- */
 
