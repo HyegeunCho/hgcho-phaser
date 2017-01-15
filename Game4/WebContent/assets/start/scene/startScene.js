@@ -64,7 +64,6 @@ function startScene(aGame, aParent) {
 	this.fBtn_popup_resume = btn_popup_resume;
 	this.fBtn_popup_go_main = btn_popup_go_main;
 	this.fBtn_popup_restart = btn_popup_restart;
-	
 	this.fInGameMessagePopup = inGameMessagePopup;
 	this.fMessageReady = messageReady;
 	this.fMessageGo = messageGo;

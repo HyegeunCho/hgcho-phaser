@@ -176,7 +176,7 @@ Start.prototype.showReadyMessage = function(){
 	}
 	
 	if(this.scene.fMessageReady.alpha < 1){
-		this.scene.fMessageReady.alpha += 0.01;
+		this.scene.fMessageReady.alpha += 0.03;
 	}
 	else if(this.scene.fMessageReady.alpha >= 1){
 		if(this.scene.fMessageGo.alpha < 1){

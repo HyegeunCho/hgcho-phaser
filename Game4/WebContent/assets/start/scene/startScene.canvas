@@ -190,6 +190,7 @@
           "id": "82edd05c-99dc-49b0-bb80-f8aab73c7e15",
           "info": {
             "editorName": "inGameMessagePopup",
+            "editorPublic": true,
             "children": [
               {
                 "type": "atlas-sprite",
