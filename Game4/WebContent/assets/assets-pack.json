@@ -65,6 +65,18 @@
             "textureURL": "assets/start/UI/settingImage.png",
             "atlasURL": "assets/start/UI/settingImage.json",
             "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "resultPopup",
+            "textureURL": "assets/start/UI/resultPopup.png",
+            "atlasURL": "assets/start/UI/resultPopup.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "script",
+            "key": "PopupResultResource",
+            "url": "assets/start/popup/PopupResultResource.js"
         }
     ],
     "preload": [
@@ -100,7 +112,7 @@
         }
     ],
     "meta": {
-        "generated": "1484455740248",
+        "generated": "1484532225612",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",
