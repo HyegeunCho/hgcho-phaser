@@ -64,11 +64,12 @@ Start.prototype.preload = function() {
 }
 
 Start.prototype.create = function() {
-	
 	this.initUI();
 	
 	spawnBoard();
 	
+	var popup = new PopupResult();
+	popup.init(this.game);
 	 // currently selected gem starting position. used to stop player form moving gems too far.
     selectedGemStartPos = { x: 0, y: 0 };
     
@@ -203,7 +204,6 @@ Start.prototype.showReadyMessage = function(){
 }
 
 Start.prototype.initUI = function () {
-	
 	this.scene = new startScene(this.game);
 	this.game.time.advancedTiming = true;
 

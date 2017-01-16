@@ -9,6 +9,7 @@ window.START_ANIPANG = function()
 	this.game.state.add("Boot", Boot);
 	this.game.state.add("Preload", Preload);
 	this.game.state.add("Menu", Menu);
+	this.game.state.add("PopupResult", PopupResult);
 	this.game.state.add("Start", Start);
 	
 	// Now start the Boot state.
