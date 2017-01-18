@@ -12,7 +12,7 @@ function _StartPreferences(){
 	this.MATCH_MIN = 3;
 	this.SCORE_PER_GEM = 10;
 	this.GEM_REFILL_DURATION_TIME = 50;
-	this.GAME_LIMIT_TIME = 10;
+	this.GAME_LIMIT_TIME = 2;
 	this.GAME_TIMER_DURATION_MS = 250;
 	this.GAUGE_TIMER_BODY_INITIAL_SCALE = 0.8;
 	this.UNIT_SCORE						= 100;
@@ -44,6 +44,8 @@ var isPause = false;
 var isReady = false;
 
 var blind;
+
+var resultPopup;
 /**
  * Start state.
  */
@@ -64,26 +66,26 @@ Start.prototype.preload = function() {
 }
 
 Start.prototype.create = function() {
-	this.initUI();
+	Start.prototype.initUI();
 	
 	spawnBoard();
 	
-	var popup = new PopupResult();
-	popup.init(this.game);
+	resultPopup = new PopupResult();
+	resultPopup.init(window.game);
 	 // currently selected gem starting position. used to stop player form moving gems too far.
     selectedGemStartPos = { x: 0, y: 0 };
     
     // used to disable input while gems are dropping down and respawning
-   
-	blind = this.game.add.graphics(0,0);
+
+	blind = window.game.add.graphics(0,0);
 	blind.beginFill(0x000000, 1);
-	blind.drawRect(0, 0, this.game.world.width, this.game.world.height);
+	blind.drawRect(0, 0, window.game.world.width, window.game.world.height);
 	blind.alpha  = 0.7;
 	blind.visible = false;
 	
     checkAllAndKillGemMatches();
     
-    this.game.input.addMoveCallback(slideGem, this);
+    window.game.input.addMoveCallback(slideGem, this);
 
     allowInput = true;
 	isPause = false;
@@ -126,7 +128,7 @@ Start.prototype.update = function() {
             }
         }
         /// 최고 점수 업데이트
-        
+        resultPopup.show();
 	
 	} else {
 		this.scene.fImg_time_gauge_body.scale.x = (StartPreferences.GAUGE_TIMER_BODY_INITIAL_SCALE / StartPreferences.GAME_LIMIT_TIME * remainSecond);
@@ -204,47 +206,47 @@ Start.prototype.showReadyMessage = function(){
 }
 
 Start.prototype.initUI = function () {
-	this.scene = new startScene(this.game);
-	this.game.time.advancedTiming = true;
+	Start.prototype.scene = new startScene(window.game);
+	window.game.time.advancedTiming = true;
 
-	this.scene.fBtn_game_pause.inputEnalbed = true;
-	this.scene.fBtn_game_pause.events.onInputDown.add(this.pauseGame, this);
-	this.scene.fBtn_game_pause.visible = true;
+	Start.prototype.scene.fBtn_game_pause.inputEnalbed = true;
+	Start.prototype.scene.fBtn_game_pause.events.onInputDown.add(this.pauseGame, this);
+	Start.prototype.scene.fBtn_game_pause.visible = true;
 	
-	this.scene.fBtn_game_resume.inputEnabled = true;
-	this.scene.fBtn_game_resume.events.onInputDown.add(this.resumeGame, this);
-	this.scene.fBtn_game_resume.visible = false;
+	Start.prototype.scene.fBtn_game_resume.inputEnabled = true;
+	Start.prototype.scene.fBtn_game_resume.events.onInputDown.add(this.resumeGame, this);
+	Start.prototype.scene.fBtn_game_resume.visible = false;
 	
-	this.scene.fBtn_popup_resume.inputEnabled = true;
-	this.scene.fBtn_popup_resume.events.onInputDown.add(this.resumeGame, this);
+	Start.prototype.scene.fBtn_popup_resume.inputEnabled = true;
+	Start.prototype.scene.fBtn_popup_resume.events.onInputDown.add(this.resumeGame, this);
 	
-	this.scene.fBtn_popup_restart.inputEnabled = true;
-	this.scene.fBtn_popup_restart.events.onInputDown.add(this.restartGame, this);
+	Start.prototype.scene.fBtn_popup_restart.inputEnabled = true;
+	Start.prototype.scene.fBtn_popup_restart.events.onInputDown.add(this.restartGame, this);
 	
-	this.scene.fBtn_popup_go_main.inputEnabled = true;
-	this.scene.fBtn_popup_go_main.events.onInputDown.add(this.exitGame, this);
+	Start.prototype.scene.fBtn_popup_go_main.inputEnabled = true;
+	Start.prototype.scene.fBtn_popup_go_main.events.onInputDown.add(this.exitGame, this);
 	
-	this.scene.fPopupPause.visible = false;
+	Start.prototype.scene.fPopupPause.visible = false;
 	
-	this.scene.fInGameMessagePopup.visible = false;
-	this.scene.fMessageGo.alpha = 0 ;
-	this.scene.fMessageReady.alpha = 0 ;
-	this.scene.fMessageTimeOver.alpha = 0 ;
+	Start.prototype.scene.fInGameMessagePopup.visible = false;
+	Start.prototype.scene.fMessageGo.alpha = 0 ;
+	Start.prototype.scene.fMessageReady.alpha = 0 ;
+	Start.prototype.scene.fMessageTimeOver.alpha = 0 ;
 
 	if (FB_DATA != null) {
-		myProfileImage = this.game.add.image(36, 33, 'myProfileImage');	
+		myProfileImage = window.game.add.image(36, 33, 'myProfileImage');	
 	}
 	
-	scoreText = this.game.add.bitmapText(240, 70, 'textScore', '0', 30);
+	scoreText = window.game.add.bitmapText(240, 70, 'textScore', '0', 30);
 	scoreText.anchor.set(0.5);
 	
-	comboText = this.game.add.bitmapText(420, 125, 'comboFont', '0', 35);
+	comboText = window.game.add.bitmapText(420, 125, 'comboFont', '0', 35);
 	comboText.anchor.set(0.5);
 	
-	this.scene.fImg_Combo.alpha = 0;
+	Start.prototype.scene.fImg_Combo.alpha = 0;
 	comboText.alpha = 0;
 	
-	remainTimeText = this.game.add.text(230, 718, StartPreferences.GAME_LIMIT_TIME.toFixed(2), {
+	remainTimeText = window.game.add.text(230, 718, StartPreferences.GAME_LIMIT_TIME.toFixed(2), {
 		fontSize : '18px',
 		fill : '#000'
 	});
@@ -286,15 +288,15 @@ Start.prototype.resumeGame = function () {
 
 Start.prototype.restartGame = function() {
 	
-	this.initUI();
+	Start.prototype.initUI();
 	
-	this.resumeGame();
+	Start.prototype.resumeGame();
 	
-	this.create();
+	Start.prototype.create();
 }
 
 Start.prototype.exitGame = function() {
-	this.game.state.start("Menu");
+	window.game.state.start("Menu");
 }
 
 var currentPlayingAnimations = {};
@@ -329,6 +331,7 @@ Start.prototype.playAnimations = function(inName, inPosX, inPosY, inCallback) {
 		});
 	}
 }
+
 var showReadyDelta = 0;
 
 function spawnBoard() {
