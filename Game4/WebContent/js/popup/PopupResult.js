@@ -12,15 +12,21 @@ preload : function(){
 },
 
 init : function(game){
-	this.scene = new PopupResultResource(game);
-	this.scene.visible = false;
+	PopupResult.prototype.scene = new PopupResultResource(game);
+	PopupResult.prototype.scene.visible = false;
+	
+	PopupResult.prototype.scene.fBtn_game_close.inputEnalbed = true;
+	PopupResult.prototype.scene.fBtn_game_close.events.onInputDown.add(Start.prototype.exitGame, this);
+	
+	PopupResult.prototype.scene.fBtn_popup_restart.inputEnalbed = true;
+	PopupResult.prototype.scene.fBtn_popup_restart.events.onInputDown.add(Start.prototype.restartGame, this);
 },
 
 show : function(){
-	this.scene.visible = true;
+	PopupResult.prototype.scene.visible = true;
 },
 
 hide : function(){
-	this.scene.visible = false;
+	PopupResult.prototype.scene.visible = false;
 }
 }

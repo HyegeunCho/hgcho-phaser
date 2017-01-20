@@ -14,18 +14,27 @@ function PopupResultResource(aGame, aParent) {
 
 	/* --- pre-init-end --- */
 
-	this.game.add.sprite(36, 262, 'resultPopup', 'resultBG.png', this);
+	var resultPopup = this.game.add.group(this);
 
-	this.game.add.sprite(64, 225, 'resultPopup', 'resultRibbon.png', this);
+	this.game.add.sprite(54, 121, 'resultPopup', 'bg.png', resultPopup);
 
-	var btnRestart = this.game.add.button(36, 544, 'settingImage', null, this, null, 'btnRestart.png', null, null, this);
+	var btn_popup_restart = this.game.add.button(162, 544, 'resultPopup', this.OnClickBtnRestart, this, 'restartButton.png', 'restartButton.png', 'restartButton.png', 'restartButton.png', resultPopup);
 
-	var btnMainMenu = this.game.add.button(243, 544, 'settingImage', null, this, null, 'btnMainMenu.png', null, null, this);
+	this.game.add.sprite(68, 181, 'resultPopup', 'top.png', resultPopup);
+
+	this.game.add.sprite(68, 425, 'resultPopup', 'bottom.png', resultPopup);
+
+	this.game.add.sprite(91, 84, 'resultPopup', 'ribon.png', resultPopup);
+
+	this.game.add.sprite(196, 155, 'resultPopup', 'scroe.png', resultPopup);
+
+	var btn_game_close = this.game.add.button(401, 107, 'resultPopup', this.OnClickBtnClose, this, 'closeButton.png', 'closeButton.png', 'closeButton.png', 'closeButton.png', resultPopup);
 
 	 // public fields
 
-	this.fBtnRestart = btnRestart;
-	this.fBtnMainMenu = btnMainMenu;
+	this.fResultPopup = resultPopup;
+	this.fBtn_popup_restart = btn_popup_restart;
+	this.fBtn_game_close = btn_game_close;
 
 	/* --- post-init-begin --- */
 

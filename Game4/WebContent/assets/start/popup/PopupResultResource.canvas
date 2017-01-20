@@ -10,50 +10,96 @@
     "id": "9f3f513c-bae1-4ae1-9d1d-9611776c3a1d",
     "info": {
       "editorName": "PopupResult",
-      "children": [
-        {
-          "type": "atlas-sprite",
-          "id": "99e8a171-6304-4b9f-a1ba-c41ef4508289",
-          "asset": "0",
-          "info": {
-            "editorName": "resultBG_png",
-            "x": 36,
-            "y": 262
-          }
-        },
-        {
-          "type": "atlas-sprite",
-          "id": "03ca0d88-e108-4337-8ec4-667baf9835f2",
-          "asset": "1",
-          "info": {
-            "editorName": "resultRibbon_png",
-            "x": 64,
-            "y": 225
-          }
-        },
-        {
-          "type": "button",
-          "id": "a5f98e70-ee1c-4c29-8a73-e2a03a92ffd8",
-          "asset": "2",
-          "info": {
-            "editorName": "btnRestart",
-            "editorPublic": true,
-            "x": 36,
-            "y": 544
-          }
-        },
-        {
-          "type": "button",
-          "id": "61ad2d64-8beb-4d4c-8072-422d0d3d9059",
-          "asset": "3",
-          "info": {
-            "editorName": "btnMainMenu",
-            "editorPublic": true,
-            "x": 243,
-            "y": 544
-          }
+      "children": [{
+        "type": "group",
+        "id": "cd39e60e-ff8f-4d77-a83d-d7cdf40df2a5",
+        "info": {
+          "editorName": "resultPopup",
+          "editorPublic": true,
+          "children": [
+            {
+              "type": "atlas-sprite",
+              "id": "26c68e05-7d32-48a4-8bc7-361287c0a1fd",
+              "asset": "0",
+              "info": {
+                "editorName": "bg_png",
+                "x": 54,
+                "y": 121
+              }
+            },
+            {
+              "type": "button",
+              "id": "a6ad7169-4466-407a-b841-b8e84c161558",
+              "asset": "1",
+              "info": {
+                "editorName": "btn_popup_restart",
+                "editorPublic": true,
+                "x": 162,
+                "y": 544,
+                "callback": "this.OnClickBtnRestart",
+                "overFrame": "restartButton.png",
+                "downFrame": "restartButton.png",
+                "upFrame": "restartButton.png"
+              }
+            },
+            {
+              "type": "atlas-sprite",
+              "id": "fcdbfa14-2d20-4b29-89cf-1b13a10ca98c",
+              "asset": "2",
+              "info": {
+                "editorName": "top_png",
+                "x": 68,
+                "y": 181
+              }
+            },
+            {
+              "type": "atlas-sprite",
+              "id": "6b2b6c24-3519-4aa1-83d3-70b9b59e7e35",
+              "asset": "3",
+              "info": {
+                "editorName": "bottom_png",
+                "x": 68,
+                "y": 425
+              }
+            },
+            {
+              "type": "atlas-sprite",
+              "id": "4ae036e5-d690-4711-81bc-5dbf458a44b0",
+              "asset": "4",
+              "info": {
+                "editorName": "ribon_png",
+                "x": 91,
+                "y": 84
+              }
+            },
+            {
+              "type": "atlas-sprite",
+              "id": "4c3c77c7-7086-4ae6-88af-668449c5e9e4",
+              "asset": "5",
+              "info": {
+                "editorName": "scroe_png",
+                "x": 196,
+                "y": 155
+              }
+            },
+            {
+              "type": "button",
+              "id": "3f02066b-8629-4c7c-a4da-66e465418fc8",
+              "asset": "6",
+              "info": {
+                "editorName": "btn_game_close",
+                "editorPublic": true,
+                "x": 401,
+                "y": 107,
+                "callback": "this.OnClickBtnClose",
+                "overFrame": "closeButton.png",
+                "downFrame": "closeButton.png",
+                "upFrame": "closeButton.png"
+              }
+            }
+          ]
         }
-      ]
+      }]
     }
   },
   "asset-table": {
@@ -61,25 +107,43 @@
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
       "asset": "resultPopup",
-      "sprite": "resultBG.png"
+      "sprite": "bg.png"
     },
     "1": {
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
       "asset": "resultPopup",
-      "sprite": "resultRibbon.png"
+      "sprite": "restartButton.png"
     },
     "2": {
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
-      "asset": "settingImage",
-      "sprite": "btnRestart.png"
+      "asset": "resultPopup",
+      "sprite": "top.png"
     },
     "3": {
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
-      "asset": "settingImage",
-      "sprite": "btnMainMenu.png"
+      "asset": "resultPopup",
+      "sprite": "bottom.png"
+    },
+    "4": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "resultPopup",
+      "sprite": "ribon.png"
+    },
+    "5": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "resultPopup",
+      "sprite": "scroe.png"
+    },
+    "6": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "resultPopup",
+      "sprite": "closeButton.png"
     }
   }
 }
