@@ -1,0 +1,20 @@
+<font>
+  <info face="comboFont" size="50" bold="0" italic="0" charset="" unicode="" stretchH="100" smooth="1" aa="1" padding="2,2,2,2" spacing="0,0" outline="0"/>
+  <common lineHeight="62" base="47" scaleW="248" scaleH="512" pages="1" packed="0"/>
+  <pages>
+    <page id="0" file="comboFont.png"/>
+  </pages>
+  <chars count="10">
+    <char id="48" x="1" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="49" x="273" y="1" width="24" height="42" xoffset="0" yoffset="0" xadvance="24" page="0" chnl="15"/>
+    <char id="50" x="299" y="1" width="32" height="41" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="51" x="35" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="52" x="69" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="53" x="103" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="54" x="137" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="55" x="171" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="56" x="205" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="57" x="239" y="1" width="32" height="42" xoffset="0" yoffset="0" xadvance="32" page="0" chnl="15"/>
+    <char id="44" x="333" y="1" width="19" height="27" xoffset="0" yoffset="15" xadvance="19" page="0" chnl="15"/>
+  </chars>
+</font>

@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "Symbol 10019.png",
+	"frame": {"x":1,"y":1,"w":81,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":82},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "Symbol 10025.png",
+	"frame": {"x":84,"y":85,"w":81,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":81,"h":81},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "Symbol 10031.png",
+	"frame": {"x":1,"y":85,"w":81,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":82},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "Symbol 10037.png",
+	"frame": {"x":167,"y":85,"w":81,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":81,"h":80},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "Symbol 10043.png",
+	"frame": {"x":84,"y":1,"w":81,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":82},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "Symbol 10049.png",
+	"frame": {"x":167,"y":167,"w":81,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":81,"h":78},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "Symbol 10055.png",
+	"frame": {"x":167,"y":1,"w":81,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":82},
+	"sourceSize": {"w":81,"h":82}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "touchedBlock.png",
+	"format": "RGBA8888",
+	"size": {"w":249,"h":246},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4a8c52afca3539010f0e753ed9369d65:d76ab0ddead3dc28cc60159507301b4d:3f4fc25cb5eb697a3c7ea44cfa2e61cc$"
+}
+}

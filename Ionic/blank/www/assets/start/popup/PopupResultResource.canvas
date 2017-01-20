@@ -1,0 +1,85 @@
+{
+  "settings": {
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false
+  },
+  "world": {
+    "type": "group",
+    "id": "9f3f513c-bae1-4ae1-9d1d-9611776c3a1d",
+    "info": {
+      "editorName": "PopupResult",
+      "children": [
+        {
+          "type": "atlas-sprite",
+          "id": "99e8a171-6304-4b9f-a1ba-c41ef4508289",
+          "asset": "0",
+          "info": {
+            "editorName": "resultBG_png",
+            "x": 36,
+            "y": 262
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "03ca0d88-e108-4337-8ec4-667baf9835f2",
+          "asset": "1",
+          "info": {
+            "editorName": "resultRibbon_png",
+            "x": 64,
+            "y": 225
+          }
+        },
+        {
+          "type": "button",
+          "id": "a5f98e70-ee1c-4c29-8a73-e2a03a92ffd8",
+          "asset": "2",
+          "info": {
+            "editorName": "btnRestart",
+            "editorPublic": true,
+            "x": 36,
+            "y": 544
+          }
+        },
+        {
+          "type": "button",
+          "id": "61ad2d64-8beb-4d4c-8072-422d0d3d9059",
+          "asset": "3",
+          "info": {
+            "editorName": "btnMainMenu",
+            "editorPublic": true,
+            "x": 243,
+            "y": 544
+          }
+        }
+      ]
+    }
+  },
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "resultPopup",
+      "sprite": "resultBG.png"
+    },
+    "1": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "resultPopup",
+      "sprite": "resultRibbon.png"
+    },
+    "2": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnRestart.png"
+    },
+    "3": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnMainMenu.png"
+    }
+  }
+}

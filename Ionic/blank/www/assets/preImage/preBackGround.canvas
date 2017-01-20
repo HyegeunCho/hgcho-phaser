@@ -1,0 +1,87 @@
+{
+  "settings": {
+    "sceneWidth": 490,
+    "sceneHeight": 800,
+    "generateOnSave": true,
+    "enableStepping": false
+  },
+  "world": {
+    "type": "group",
+    "id": "db03d7b5-3849-422c-86fa-38237091ad10",
+    "info": {
+      "editorName": "preBackGround",
+      "children": [
+        {
+          "type": "atlas-sprite",
+          "id": "1f412bf0-e061-44e4-950b-e993892fcef5",
+          "asset": "0",
+          "info": {
+            "editorName": "preBackGound_png",
+            "scale.x": 0.9127847483458625,
+            "scale.y": 0.8339597286371081
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "e3ae352d-7226-4290-9d95-928842772924",
+          "asset": "1",
+          "info": {
+            "editorName": "loading0000_png",
+            "x": 155,
+            "y": 451
+          }
+        },
+        {
+          "type": "button",
+          "id": "9b9b63fd-c992-46de-9a4f-eea80c44cf5e",
+          "asset": "2",
+          "info": {
+            "editorName": "btn_login_facebook",
+            "editorPublic": true,
+            "x": 106,
+            "y": 442,
+            "callback": "this.OnClickBtnLoginFacebook"
+          }
+        },
+        {
+          "type": "button",
+          "id": "f5611e72-59cc-468b-857f-3bfd7b24123b",
+          "asset": "3",
+          "info": {
+            "editorName": "btn_login_guest",
+            "editorPublic": true,
+            "x": 171,
+            "y": 525,
+            "scale.x": 0.5,
+            "scale.y": 0.5,
+            "callback": "this.OnClickBtnGuest"
+          }
+        }
+      ]
+    }
+  },
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "preImage",
+      "sprite": "preBackGound.png"
+    },
+    "1": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "preImage",
+      "sprite": "loading0000.png"
+    },
+    "2": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "btn_login_facebook"
+    },
+    "3": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "preload",
+      "asset": "btn_login_guest"
+    }
+  }
+}

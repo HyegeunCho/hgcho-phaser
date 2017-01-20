@@ -1,0 +1,332 @@
+{
+  "settings": {
+    "sceneWidth": 480,
+    "sceneHeight": 800,
+    "generateOnSave": true,
+    "enableStepping": false
+  },
+  "world": {
+    "type": "group",
+    "id": "8c1a1426-e244-4ab7-929d-cbb4fc628ae2",
+    "info": {
+      "editorName": "startSecen",
+      "children": [
+        {
+          "type": "group",
+          "id": "1b08176f-4669-480b-8cab-eb463afc51a5",
+          "info": {
+            "editorName": "inGame",
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "224ccc44-9ee0-426a-8c16-ec53edd20bd1",
+                "asset": "0",
+                "info": {"editorName": "bg_top_png"}
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "9fafbc52-4417-44f7-b423-321eca6fe512",
+                "asset": "1",
+                "info": {
+                  "editorName": "bg_bottom_png",
+                  "editorPick": false,
+                  "y": 654
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "a60cf094-fc7d-4eca-b5df-a01d9eb37083",
+                "asset": "2",
+                "info": {
+                  "editorName": "game_board_png",
+                  "y": 181
+                }
+              },
+              {
+                "type": "button",
+                "id": "7d2f61f7-cc59-4c89-8886-d31a0dec7728",
+                "asset": "3",
+                "info": {
+                  "editorName": "btn_game_pause",
+                  "editorPublic": true,
+                  "x": 390,
+                  "y": 27,
+                  "callback": "this.OnClickBtnPause",
+                  "overFrame": "btnPause.png",
+                  "downFrame": "btnPause.png",
+                  "upFrame": "btnPause.png"
+                }
+              },
+              {
+                "type": "button",
+                "id": "a0eb07b4-0f60-478c-9b54-6c21f3e7d554",
+                "asset": "4",
+                "info": {
+                  "editorName": "btn_game_resume",
+                  "editorPublic": true,
+                  "x": 390,
+                  "y": 27,
+                  "callback": "this.OnClickBtnResume",
+                  "overFrame": "btnStart.png",
+                  "downFrame": "btnStart.png",
+                  "upFrame": "btnStart.png"
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "365212db-c766-4713-ab8e-991916fe18e1",
+                "asset": "5",
+                "info": {
+                  "editorName": "UITimeGauge_body_png",
+                  "x": 56,
+                  "y": 703,
+                  "scale.x": 0.8399999712077841,
+                  "scale.y": 1.0626088119527406
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "5bcc3e33-1d23-4cd0-a728-0766332b89fe",
+                "asset": "6",
+                "info": {
+                  "editorName": "UITimeGauge_header_png",
+                  "x": 47,
+                  "y": 703,
+                  "scale.y": 1.06
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "de859d02-ddc2-4bce-9bc4-8c642c29ff04",
+                "asset": "7",
+                "info": {
+                  "editorName": "UITimeGauge_tail_png",
+                  "x": 433,
+                  "y": 703,
+                  "scale.y": 1.06
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "3816fc40-704e-4531-afc2-4a8ae9f6e401",
+                "asset": "8",
+                "info": {
+                  "editorName": "UICombo_png",
+                  "editorPublic": true,
+                  "x": 256,
+                  "y": 88
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "0f6cc1bc-8237-415c-a372-d1e618020005",
+          "info": {
+            "editorName": "PopupPause",
+            "editorPublic": true,
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "73a1aecc-ec80-4668-ab81-92c3fd614b4d",
+                "asset": "9",
+                "info": {
+                  "editorName": "bg_png",
+                  "x": 105,
+                  "y": 265
+                }
+              },
+              {
+                "type": "button",
+                "id": "7cb4def0-8a45-41d8-b9f4-7b5417d8a87d",
+                "asset": "10",
+                "info": {
+                  "editorName": "btn_popup_resume",
+                  "editorPublic": true,
+                  "x": 143,
+                  "y": 372,
+                  "callback": "this.OnClickBtnPauseResume",
+                  "overFrame": "btnContinue.png",
+                  "downFrame": "btnContinue.png",
+                  "upFrame": "btnContinue.png"
+                }
+              },
+              {
+                "type": "button",
+                "id": "0b70f56f-9808-4da1-8efa-87f16a0e4e9e",
+                "asset": "11",
+                "info": {
+                  "editorName": "btn_popup_go_main",
+                  "editorPublic": true,
+                  "x": 143,
+                  "y": 442,
+                  "callback": "this.OnClickBtnPauseExit",
+                  "overFrame": "btnMainMenu.png",
+                  "downFrame": "btnMainMenu.png",
+                  "upFrame": "btnMainMenu.png"
+                }
+              },
+              {
+                "type": "button",
+                "id": "ed8d1448-79a9-4182-8afa-26953232b5e4",
+                "asset": "12",
+                "info": {
+                  "editorName": "btn_popup_restart",
+                  "editorPublic": true,
+                  "x": 143,
+                  "y": 302,
+                  "callback": "this.OnClickBtnPauseRestart",
+                  "overFrame": "btnRestart.png",
+                  "downFrame": "btnRestart.png",
+                  "upFrame": "btnRestart.png"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "82edd05c-99dc-49b0-bb80-f8aab73c7e15",
+          "info": {
+            "editorName": "inGameMessagePopup",
+            "editorPublic": true,
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "0bb4de0e-49d3-474d-9ec5-7d56fa8b54f2",
+                "asset": "13",
+                "info": {
+                  "editorName": "messageReady",
+                  "editorPublic": true,
+                  "x": 90,
+                  "y": 244
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "b60d38a1-5fd5-45ae-b026-e146e490dfaf",
+                "asset": "14",
+                "info": {
+                  "editorName": "messageGo",
+                  "editorPublic": true,
+                  "x": 90,
+                  "y": 244
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "47e8dd72-e5f6-4a0a-a71a-9e80483da555",
+                "asset": "15",
+                "info": {
+                  "editorName": "messageTimeOver",
+                  "editorPublic": true,
+                  "x": 53,
+                  "y": 256
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "bg_top.png"
+    },
+    "1": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "bg_bottom.png"
+    },
+    "2": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_board.png"
+    },
+    "3": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnPause.png"
+    },
+    "4": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnStart.png"
+    },
+    "5": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "UITimeGauge_body.png"
+    },
+    "6": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "UITimeGauge_header.png"
+    },
+    "7": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "UITimeGauge_tail.png"
+    },
+    "8": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "combo0011.png"
+    },
+    "9": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "bg.png"
+    },
+    "10": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnContinue.png"
+    },
+    "11": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnMainMenu.png"
+    },
+    "12": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "settingImage",
+      "sprite": "btnRestart.png"
+    },
+    "13": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_message0001.png"
+    },
+    "14": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_message0002.png"
+    },
+    "15": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "uiAtlas",
+      "sprite": "game_message0003.png"
+    }
+  }
+}

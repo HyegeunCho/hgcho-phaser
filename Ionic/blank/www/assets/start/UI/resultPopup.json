@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "best_score0090.png",
+	"frame": {"x":0,"y":0,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "resultBG.png",
+	"frame": {"x":569,"y":0,"w":399,"h":336},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":399,"h":336},
+	"sourceSize": {"w":399,"h":336}
+},
+{
+	"filename": "resultRibbon.png",
+	"frame": {"x":0,"y":390,"w":346,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":346,"h":83},
+	"sourceSize": {"w":346,"h":83}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "resultPopup.png",
+	"format": "RGBA8888",
+	"size": {"w":968,"h":473},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b2a8b41e2d5b1c690f20c7c9b52f242a:c7d029e59c2f593a555b651f715ae367:99dce7059776af0108775ae575b4276a$"
+}
+}

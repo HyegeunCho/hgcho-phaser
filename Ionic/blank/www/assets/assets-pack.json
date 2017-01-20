@@ -1,0 +1,121 @@
+{
+    "start": [
+        {
+            "type": "atlas",
+            "key": "uiAtlas",
+            "textureURL": "assets/start/UI/uiAtlas.png",
+            "atlasURL": "assets/start/UI/uiAtlas.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "script",
+            "key": "startScene",
+            "url": "assets/start/scene/startScene.js"
+        },
+        {
+            "type": "spritesheet",
+            "key": "block",
+            "url": "assets/start/block/blocks.png",
+            "frameWidth": 0,
+            "frameHeight": 0,
+            "frameMax": -1,
+            "margin": 0,
+            "spacing": 0
+        },
+        {
+            "type": "atlas",
+            "key": "ingame",
+            "textureURL": "assets/start/block/ingame.png",
+            "atlasURL": "assets/start/block/touchedBlock.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "effect",
+            "textureURL": "assets/start/effect/effect.png",
+            "atlasURL": "assets/start/effect/effect.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "bitmapFont",
+            "key": "comboFont",
+            "textureURL": "assets/start/font/comboFont.png",
+            "atlasURL": "assets/start/font/comboFont.xml",
+            "xSpacing": 0,
+            "ySpacing": 0
+        },
+        {
+            "type": "bitmapFont",
+            "key": "textScore",
+            "textureURL": "assets/start/font/textScoreFont.png",
+            "atlasURL": "assets/start/font/textScoreFont.xml",
+            "xSpacing": 0,
+            "ySpacing": 0
+        },
+        {
+            "type": "atlas",
+            "key": "txtTouched",
+            "textureURL": "assets/start/UI/txtTounched.png",
+            "atlasURL": "assets/start/UI/txtTounched.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "settingImage",
+            "textureURL": "assets/start/UI/settingImage.png",
+            "atlasURL": "assets/start/UI/settingImage.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "atlas",
+            "key": "resultPopup",
+            "textureURL": "assets/start/UI/resultPopup.png",
+            "atlasURL": "assets/start/UI/resultPopup.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "script",
+            "key": "PopupResultResource",
+            "url": "assets/start/popup/PopupResultResource.js"
+        }
+    ],
+    "preload": [
+        {
+            "type": "atlas",
+            "key": "preImage",
+            "textureURL": "assets/preImage/preImage.png",
+            "atlasURL": "assets/preImage/preImage.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        },
+        {
+            "type": "image",
+            "key": "preBackGound",
+            "url": "assets/preImage/preBackGound.png",
+            "overwrite": false
+        },
+        {
+            "type": "script",
+            "key": "preBackGround",
+            "url": "assets/preImage/preBackGround.js"
+        },
+        {
+            "type": "image",
+            "key": "btn_login_facebook",
+            "url": "assets/preImage/btn_login_facebook.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "btn_login_guest",
+            "url": "assets/preImage/btn_login_guest.png",
+            "overwrite": false
+        }
+    ],
+    "meta": {
+        "generated": "1484532225612",
+        "app": "Phaser Editor",
+        "url": "http://phasereditor.boniatillo.com",
+        "version": "1.0",
+        "copyright": "Arian Fornaris (c) 2015,2016"
+    }
+}
