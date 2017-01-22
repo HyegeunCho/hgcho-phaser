@@ -12,7 +12,7 @@ function _StartPreferences(){
 	this.MATCH_MIN = 3;
 	this.SCORE_PER_GEM = 10;
 	this.GEM_REFILL_DURATION_TIME = 50;
-	this.GAME_LIMIT_TIME = 2;
+	this.GAME_LIMIT_TIME = 1;
 	this.GAME_TIMER_DURATION_MS = 250;
 	this.GAUGE_TIMER_BODY_INITIAL_SCALE = 0.8;
 	this.UNIT_SCORE						= 100;
@@ -66,12 +66,10 @@ Start.prototype.preload = function() {
 }
 
 Start.prototype.create = function() {
-	Start.prototype.initUI();
+	this.initUI();
 	
 	spawnBoard();
-	
-	resultPopup = new PopupResult();
-	resultPopup.init(window.game);
+
 	 // currently selected gem starting position. used to stop player form moving gems too far.
     selectedGemStartPos = { x: 0, y: 0 };
     
@@ -82,6 +80,9 @@ Start.prototype.create = function() {
 	blind.drawRect(0, 0, window.game.world.width, window.game.world.height);
 	blind.alpha  = 0.7;
 	blind.visible = false;
+	
+	resultPopup = new PopupResult();
+	resultPopup.init(window.game, this);
 	
     checkAllAndKillGemMatches();
     
@@ -128,7 +129,7 @@ Start.prototype.update = function() {
             }
         }
         /// 최고 점수 업데이트
-        resultPopup.show();
+        this.showEnd();
 	
 	} else {
 		this.scene.fImg_time_gauge_body.scale.x = (StartPreferences.GAUGE_TIMER_BODY_INITIAL_SCALE / StartPreferences.GAME_LIMIT_TIME * remainSecond);
@@ -164,6 +165,19 @@ Start.prototype.update = function() {
 	
 	isComboUp = false;
 	scoreText.text = Score.getScore();
+}
+
+Start.prototype.showEnd = function(){
+	blind.visible = true;
+	this.scene.fInGameMessagePopup.visible = true;
+	this.scene.fMessageTimeOver.visible = true;
+	if(this.scene.fMessageTimeOver.alpha < 1){
+		this.scene.fMessageTimeOver.alpha += 0.02;
+	}
+	else{
+		this.scene.fInGameMessagePopup.visible = false;
+		resultPopup.show(Score.getScore());
+	}
 }
 
 Start.prototype.showReadyMessage = function(){
@@ -206,32 +220,32 @@ Start.prototype.showReadyMessage = function(){
 }
 
 Start.prototype.initUI = function () {
-	Start.prototype.scene = new startScene(window.game);
-	window.game.time.advancedTiming = true;
+	this.scene = new startScene(this.game);
+	this.game.time.advancedTiming = true;
 
-	Start.prototype.scene.fBtn_game_pause.inputEnalbed = true;
-	Start.prototype.scene.fBtn_game_pause.events.onInputDown.add(this.pauseGame, this);
-	Start.prototype.scene.fBtn_game_pause.visible = true;
+	this.scene.fBtn_game_pause.inputEnalbed = true;
+	this.scene.fBtn_game_pause.events.onInputDown.add(this.pauseGame, this);
+	this.scene.fBtn_game_pause.visible = true;
 	
-	Start.prototype.scene.fBtn_game_resume.inputEnabled = true;
-	Start.prototype.scene.fBtn_game_resume.events.onInputDown.add(this.resumeGame, this);
-	Start.prototype.scene.fBtn_game_resume.visible = false;
+	this.scene.fBtn_game_resume.inputEnabled = true;
+	this.scene.fBtn_game_resume.events.onInputDown.add(this.resumeGame, this);
+	this.scene.fBtn_game_resume.visible = false;
 	
-	Start.prototype.scene.fBtn_popup_resume.inputEnabled = true;
-	Start.prototype.scene.fBtn_popup_resume.events.onInputDown.add(this.resumeGame, this);
+	this.scene.fBtn_popup_resume.inputEnabled = true;
+	this.scene.fBtn_popup_resume.events.onInputDown.add(this.resumeGame, this);
 	
-	Start.prototype.scene.fBtn_popup_restart.inputEnabled = true;
-	Start.prototype.scene.fBtn_popup_restart.events.onInputDown.add(this.restartGame, this);
+	this.scene.fBtn_popup_restart.inputEnabled = true;
+	this.scene.fBtn_popup_restart.events.onInputDown.add(this.restartGame, this);
 	
-	Start.prototype.scene.fBtn_popup_go_main.inputEnabled = true;
-	Start.prototype.scene.fBtn_popup_go_main.events.onInputDown.add(this.exitGame, this);
+	this.scene.fBtn_popup_go_main.inputEnabled = true;
+	this.scene.fBtn_popup_go_main.events.onInputDown.add(this.exitGame, this);
 	
-	Start.prototype.scene.fPopupPause.visible = false;
+	this.scene.fPopupPause.visible = false;
 	
-	Start.prototype.scene.fInGameMessagePopup.visible = false;
-	Start.prototype.scene.fMessageGo.alpha = 0 ;
-	Start.prototype.scene.fMessageReady.alpha = 0 ;
-	Start.prototype.scene.fMessageTimeOver.alpha = 0 ;
+	this.scene.fInGameMessagePopup.visible = false;
+	this.scene.fMessageGo.alpha = 0 ;
+	this.scene.fMessageReady.alpha = 0 ;
+	this.scene.fMessageTimeOver.alpha = 0 ;
 
 	if (FB_DATA != null) {
 		myProfileImage = window.game.add.image(36, 33, 'myProfileImage');	
@@ -243,7 +257,7 @@ Start.prototype.initUI = function () {
 	comboText = window.game.add.bitmapText(420, 125, 'comboFont', '0', 35);
 	comboText.anchor.set(0.5);
 	
-	Start.prototype.scene.fImg_Combo.alpha = 0;
+	this.scene.fImg_Combo.alpha = 0;
 	comboText.alpha = 0;
 	
 	remainTimeText = window.game.add.text(230, 718, StartPreferences.GAME_LIMIT_TIME.toFixed(2), {
@@ -288,11 +302,11 @@ Start.prototype.resumeGame = function () {
 
 Start.prototype.restartGame = function() {
 	
-	Start.prototype.initUI();
+	this.initUI();
 	
-	Start.prototype.resumeGame();
+	this.resumeGame();
 	
-	Start.prototype.create();
+	this.create();
 }
 
 Start.prototype.exitGame = function() {
@@ -356,10 +370,17 @@ function spawnBoard() {
 }
 
 //set the gem spritesheet to a random frame
+var frameArray = [{normal : 0, click : 7},
+                  {normal : 1, click : 11},
+                  {normal : 2, click : 12},
+                  {normal : 5, click : 3},
+                  {normal : 6, click : 4},
+                  {normal : 10, click : 8}]
+		
+		
 function randomizeGemColor(gem) {
-
-	gem.frame = this.game.rnd.integerInRange(0, gem.animations.frameTotal - 1);
-
+	gem.frame = frameArray[this.game.rnd.integerInRange(0, 5)].normal;
+	
 }
 
 //set the position on the board for a gem
@@ -424,25 +445,49 @@ function slideGem(pointer, x, y) {
 }
 
 //select a gem and remember its starting position
-function selectGem(gem) {
+var _preGem = null;
 
+function selectGem(gem) {
     if (allowInput && isReady)
     {
+    	if(_preGem != null){
+    		for(var i = 0; i < frameArray.length; i++){
+    			if(_preGem.frame == frameArray[i].click){
+    				_preGem.frame = frameArray[i].normal;
+    			}
+    		}
+    	}
+    	
+    	for(var i = 0; i < frameArray.length; i++){
+			if(gem.frame == frameArray[i].normal){
+				gem.frame = frameArray[i].click;
+			}
+		}
+    	
         selectedGem = gem;
         selectedGemStartPos.x = gem.posX;
         selectedGemStartPos.y = gem.posY;
+        
+        _preGem = gem;
     }
 
 }
 
 
 function releaseGem() {
-
     if (tempShiftedGem == null && isFocus === false) {
         selectedGem = null;
         return;
     }
     
+    if(_preGem != null){
+		for(var i = 0; i < frameArray.length; i++){
+			if(_preGem.frame == frameArray[i].click){
+				_preGem.frame = frameArray[i].normal;
+			}
+		}
+	}
+	
     isFocus = false;
 
     // when the mouse is released with a gem selected
@@ -478,13 +523,6 @@ function getGem(posX, posY) {
 function getGemColor(gem) {
 
     return gem.frame;
-
-}
-
-// set the gem spritesheet to a random frame
-function randomizeGemColor(gem) {
-
-    gem.frame = game.rnd.integerInRange(0, gem.animations.frameTotal - 1);
 
 }
 

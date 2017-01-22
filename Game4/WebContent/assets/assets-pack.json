@@ -26,7 +26,7 @@
             "type": "atlas",
             "key": "ingame",
             "textureURL": "assets/start/block/ingame.png",
-            "atlasURL": "assets/start/block/touchedBlock.json",
+            "atlasURL": "assets/start/block/ingame.json",
             "format": "TEXTURE_ATLAS_JSON_ARRAY"
         },
         {
@@ -112,7 +112,7 @@
         }
     ],
     "meta": {
-        "generated": "1484532225612",
+        "generated": "1485061052378",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",
