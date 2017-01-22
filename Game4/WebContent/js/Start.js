@@ -12,7 +12,7 @@ function _StartPreferences(){
 	this.MATCH_MIN = 3;
 	this.SCORE_PER_GEM = 10;
 	this.GEM_REFILL_DURATION_TIME = 50;
-	this.GAME_LIMIT_TIME = 1;
+	this.GAME_LIMIT_TIME = 60;
 	this.GAME_TIMER_DURATION_MS = 250;
 	this.GAUGE_TIMER_BODY_INITIAL_SCALE = 0.8;
 	this.UNIT_SCORE						= 100;
