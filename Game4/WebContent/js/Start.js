@@ -12,7 +12,7 @@ function _StartPreferences(){
 	this.MATCH_MIN = 3;
 	this.SCORE_PER_GEM = 10;
 	this.GEM_REFILL_DURATION_TIME = 50;
-	this.GAME_LIMIT_TIME = 60;
+	this.GAME_LIMIT_TIME = 1;
 	this.GAME_TIMER_DURATION_MS = 250;
 	this.GAUGE_TIMER_BODY_INITIAL_SCALE = 0.8;
 	this.UNIT_SCORE						= 100;
@@ -129,7 +129,12 @@ Start.prototype.update = function() {
             }
         }
         /// 최고 점수 업데이트
-        this.showEnd();
+        if(resultPopup.isUpdate == false){
+        	 this.showEnd();
+        }
+        else{
+        	resultPopup.update();
+        }
 	
 	} else {
 		this.scene.fImg_time_gauge_body.scale.x = (StartPreferences.GAUGE_TIMER_BODY_INITIAL_SCALE / StartPreferences.GAME_LIMIT_TIME * remainSecond);
@@ -174,10 +179,11 @@ Start.prototype.showEnd = function(){
 	if(this.scene.fMessageTimeOver.alpha < 1){
 		this.scene.fMessageTimeOver.alpha += 0.02;
 	}
-	else{
+	else {
 		this.scene.fInGameMessagePopup.visible = false;
+		Score.setMaxScore();
 		resultPopup.show(Score.getScore());
-	}
+	}	
 }
 
 Start.prototype.showReadyMessage = function(){
@@ -276,7 +282,6 @@ Start.prototype.pauseGame = function() {
 	blind.visible = true;
 	pauseTimestamp = (new Date()).getTime();
 	allowInput = false;
-	isPause = true;
 	
 	var popupGroup = this.game.add.group();
 	popupGroup.add(this.scene.fPopupPause);
@@ -310,7 +315,7 @@ Start.prototype.restartGame = function() {
 }
 
 Start.prototype.exitGame = function() {
-	window.game.state.start("Menu");
+	this.game.state.start("Menu");
 }
 
 var currentPlayingAnimations = {};

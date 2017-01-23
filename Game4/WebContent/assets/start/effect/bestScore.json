@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "best_score0001.png",
+	"frame": {"x":0,"y":0,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0002.png",
+	"frame": {"x":569,"y":0,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0003.png",
+	"frame": {"x":1138,"y":0,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0004.png",
+	"frame": {"x":0,"y":390,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0005.png",
+	"frame": {"x":569,"y":390,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0006.png",
+	"frame": {"x":1138,"y":390,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0007.png",
+	"frame": {"x":0,"y":780,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0008.png",
+	"frame": {"x":569,"y":780,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+},
+{
+	"filename": "best_score0009.png",
+	"frame": {"x":1138,"y":780,"w":569,"h":390},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":390},
+	"sourceSize": {"w":569,"h":390}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bestScore.png",
+	"format": "RGBA8888",
+	"size": {"w":1707,"h":1170},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2ebfeca09934a8ef868f4d7e830977d9:8d9fcb63fefda6d7a51f1849936c9538:51854b97635754a27003862fab6f5173$"
+}
+}

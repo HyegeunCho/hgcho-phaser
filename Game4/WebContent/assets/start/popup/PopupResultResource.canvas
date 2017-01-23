@@ -64,10 +64,22 @@
             },
             {
               "type": "atlas-sprite",
-              "id": "4ae036e5-d690-4711-81bc-5dbf458a44b0",
+              "id": "939ff78e-a9b6-4b11-a562-44500d3e2823",
               "asset": "4",
               "info": {
+                "editorName": "bestScore",
+                "editorPublic": true,
+                "x": -29,
+                "y": -32
+              }
+            },
+            {
+              "type": "atlas-sprite",
+              "id": "4ae036e5-d690-4711-81bc-5dbf458a44b0",
+              "asset": "5",
+              "info": {
                 "editorName": "ribon_png",
+                "editorPublic": true,
                 "x": 91,
                 "y": 84
               }
@@ -75,7 +87,7 @@
             {
               "type": "atlas-sprite",
               "id": "4c3c77c7-7086-4ae6-88af-668449c5e9e4",
-              "asset": "5",
+              "asset": "6",
               "info": {
                 "editorName": "scroe_png",
                 "x": 196,
@@ -85,7 +97,7 @@
             {
               "type": "button",
               "id": "3f02066b-8629-4c7c-a4da-66e465418fc8",
-              "asset": "6",
+              "asset": "7",
               "info": {
                 "editorName": "btn_game_close",
                 "editorPublic": true,
@@ -130,16 +142,22 @@
     "4": {
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
-      "asset": "resultPopup",
-      "sprite": "ribon.png"
+      "asset": "bestScore",
+      "sprite": "best_score0009.png"
     },
     "5": {
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
       "asset": "resultPopup",
-      "sprite": "scroe.png"
+      "sprite": "ribon.png"
     },
     "6": {
+      "file": "WebContent/assets/assets-pack.json",
+      "section": "start",
+      "asset": "resultPopup",
+      "sprite": "scroe.png"
+    },
+    "7": {
       "file": "WebContent/assets/assets-pack.json",
       "section": "start",
       "asset": "resultPopup",

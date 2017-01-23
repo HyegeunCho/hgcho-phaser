@@ -2,6 +2,8 @@ var Score = {
 		
 	score : 0,
 	combo : 0,
+	maxScore:0,
+	isChangeMaxScore:false,
 	
 	setInit : function(){
 		this.score = 0;
@@ -15,6 +17,20 @@ var Score = {
 	setScore : function(count){
 		
 		this.score  = this.score + ((this.combo + 1)*StartPreferences.UNIT_SCORE)*count;
+	},
+	
+	getMaxScore : function(){
+		return this.maxScore;
+	},
+	
+	setMaxScore : function(){
+		if(this.maxScore < this.score){
+			this.isChangeMaxScore = true;
+			this.maxScore = this.score;
+		}
+		else{
+			this.isChangeMaxScore = false;
+		}
 	},
 	
 	getCombo : function(){

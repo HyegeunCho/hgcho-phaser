@@ -24,7 +24,9 @@ function PopupResultResource(aGame, aParent) {
 
 	this.game.add.sprite(68, 425, 'resultPopup', 'bottom.png', resultPopup);
 
-	this.game.add.sprite(91, 84, 'resultPopup', 'ribon.png', resultPopup);
+	var bestScore = this.game.add.sprite(-29, -32, 'bestScore', 'best_score0009.png', resultPopup);
+
+	var ribon_png = this.game.add.sprite(91, 84, 'resultPopup', 'ribon.png', resultPopup);
 
 	this.game.add.sprite(196, 155, 'resultPopup', 'scroe.png', resultPopup);
 
@@ -34,6 +36,8 @@ function PopupResultResource(aGame, aParent) {
 
 	this.fResultPopup = resultPopup;
 	this.fBtn_popup_restart = btn_popup_restart;
+	this.fBestScore = bestScore;
+	this.fRibon_png = ribon_png;
 	this.fBtn_game_close = btn_game_close;
 
 	/* --- post-init-begin --- */

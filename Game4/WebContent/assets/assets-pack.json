@@ -77,6 +77,13 @@
             "type": "script",
             "key": "PopupResultResource",
             "url": "assets/start/popup/PopupResultResource.js"
+        },
+        {
+            "type": "atlas",
+            "key": "bestScore",
+            "textureURL": "assets/start/effect/bestScore.png",
+            "atlasURL": "assets/start/effect/bestScore.json",
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
         }
     ],
     "preload": [
@@ -112,7 +119,7 @@
         }
     ],
     "meta": {
-        "generated": "1485061052378",
+        "generated": "1485177241746",
         "app": "Phaser Editor",
         "url": "http://phasereditor.boniatillo.com",
         "version": "1.0",
