@@ -20,7 +20,7 @@ var Score = {
 	},
 	
 	getMaxScore : function(){
-		return this.maxScore;
+		return  this.comma(this.maxScore);
 	},
 	
 	setMaxScore : function(){
