@@ -122,7 +122,6 @@ Start.prototype.update = function() {
                         if (jsonObje.hasOwnProperty('code') == false) {
                             if (USER_DATA['id'] = jsonObje['id']) {
                                 USER_DATA['topScore'] = jsonObje['topScore'];
-                                Score.maxScore = USER_DATA['topScore'];
                             }
                             this.IS_SERVER_RUNNING = false;
                         }

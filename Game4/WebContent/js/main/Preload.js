@@ -73,6 +73,8 @@ var LoginStatusChangeCallback = function(response) {
             	console.log(jsonObj);
             	USER_DATA['id'] = jsonObj['id'];
             	USER_DATA['topScore'] = jsonObj['topScore'];
+            	Score.maxScore = USER_DATA['topScore'];
+            	console.log("Score.maxScore = " + Score.maxScore);
             	window.game.state.start("Start");
             })
 
