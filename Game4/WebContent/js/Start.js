@@ -12,7 +12,7 @@ function _StartPreferences(){
 	this.MATCH_MIN = 3;
 	this.SCORE_PER_GEM = 10;
 	this.GEM_REFILL_DURATION_TIME = 50;
-	this.GAME_LIMIT_TIME = 1;
+	this.GAME_LIMIT_TIME = 60;
 	this.GAME_TIMER_DURATION_MS = 250;
 	this.GAUGE_TIMER_BODY_INITIAL_SCALE = 0.8;
 	this.UNIT_SCORE						= 100;
@@ -70,7 +70,8 @@ Start.prototype.create = function() {
 	
 	spawnBoard();
 
-	 // currently selected gem starting position. used to stop player form moving gems too far.
+	 // currently selected gem starting position. used to stop player form
+		// moving gems too far.
     selectedGemStartPos = { x: 0, y: 0 };
     
     // used to disable input while gems are dropping down and respawning
@@ -111,7 +112,7 @@ Start.prototype.update = function() {
 		allowInput = false;
 		remainTimeText.text = 0.00 + "";
 
-        /// 최고 점수 업데이트
+        // / 최고 점수 업데이트
         if (Score.score > USER_DATA['topScore']) {
             if (USE_FB_INTEGRATION === true) {
                 if (this.IS_SERVER_RUNNING == undefined || this.IS_SERVER_RUNNING == false) {
@@ -120,7 +121,8 @@ Start.prototype.update = function() {
                         var jsonObje = JSON.parse(response);
                         if (jsonObje.hasOwnProperty('code') == false) {
                             if (USER_DATA['id'] = jsonObje['id']) {
-                                USER_DATA['topScore'] = jsonObje['topScore'];    
+                                USER_DATA['topScore'] = jsonObje['topScore'];
+                                Score.maxScore = USER_DATA['topScore'];
                             }
                             this.IS_SERVER_RUNNING = false;
                         }
@@ -128,7 +130,7 @@ Start.prototype.update = function() {
                 }    
             }
         }
-        /// 최고 점수 업데이트
+        // / 최고 점수 업데이트
         if(resultPopup.isUpdate == false){
         	 this.showEnd();
         }
@@ -374,7 +376,7 @@ function spawnBoard() {
     }    
 }
 
-//set the gem spritesheet to a random frame
+// set the gem spritesheet to a random frame
 var frameArray = [{normal : 0, click : 7},
                   {normal : 1, click : 11},
                   {normal : 2, click : 12},
@@ -388,7 +390,7 @@ function randomizeGemColor(gem) {
 	
 }
 
-//set the position on the board for a gem
+// set the position on the board for a gem
 function setGemPos(gem, posX, posY) {
 
 	gem.posX = posX;
@@ -425,14 +427,17 @@ function slideGem(pointer, x, y) {
 
                 gems.bringToTop(selectedGem);
 
-                // if we moved a gem to make way for the selected gem earlier, move it back into its starting position
+                // if we moved a gem to make way for the selected gem earlier,
+				// move it back into its starting position
                 if (tempShiftedGem !== null)
                 {
                     tweenGemPos(tempShiftedGem, selectedGem.posX , selectedGem.posY);
                     swapGemPosition(selectedGem, tempShiftedGem);
                 }
 
-                // when the player moves the selected gem, we need to swap the position of the selected gem with the gem currently in that position 
+                // when the player moves the selected gem, we need to swap the
+				// position of the selected gem with the gem currently in that
+				// position
                 tempShiftedGem = getGem(cursorGemPosX, cursorGemPosY);
 
                 if (tempShiftedGem === selectedGem)
@@ -449,7 +454,7 @@ function slideGem(pointer, x, y) {
     }
 }
 
-//select a gem and remember its starting position
+// select a gem and remember its starting position
 var _preGem = null;
 
 function selectGem(gem) {
@@ -501,30 +506,32 @@ function releaseGem() {
     // 3) drop down gems above removed gems
     // 4) refill the board
 
-    checkAndKillGemMatches();
+    this.game.time.events.add(200, function(){
+        checkAndKillGemMatches();
 
-    removeKilledGems();
+        removeKilledGems();
 
-    var dropGemDuration = dropGems();
+        var dropGemDuration = dropGems();
 
-    // delay board refilling until all existing gems have dropped down
-    this.game.time.events.add(dropGemDuration * 50, refillBoard);
+        // delay board refilling until all existing gems have dropped down
+        this.game.time.events.add(dropGemDuration * 50, refillBoard);
 
-    allowInput = false;
+        allowInput = false;
 
-    selectedGem = null;
-    tempShiftedGem = null;
-
+        selectedGem = null;
+        tempShiftedGem = null;    	
+    }, this);
 }
 
-//find a gem on the board according to its position on the board
+// find a gem on the board according to its position on the board
 function getGem(posX, posY) {
 
     return gems.iterate("id", calcGemId(posX, posY), Phaser.Group.RETURN_CHILD);
 
 }
 
-//since the gems are a spritesheet, their color is the same as the current frame number
+// since the gems are a spritesheet, their color is the same as the current
+// frame number
 function getGemColor(gem) {
 
     return gem.frame;
@@ -553,8 +560,10 @@ function checkIfGemCanBeMovedHere(fromPosX, fromPosY, toPosX, toPosY) {
 }
 
 // count how many gems of the same color lie in a given direction
-// eg if moveX=1 and moveY=0, it will count how many gems of the same color lie to the right of the gem
-// stops counting as soon as a gem of a different color or the board end is encountered
+// eg if moveX=1 and moveY=0, it will count how many gems of the same color lie
+// to the right of the gem
+// stops counting as soon as a gem of a different color or the board end is
+// encountered
 function countSameColorGems(startGem, moveX, moveY) {
 
     var curX = startGem.posX + moveX;
@@ -572,7 +581,8 @@ function countSameColorGems(startGem, moveX, moveY) {
 
 }
 
-// swap the position of 2 gems when the player drags the selected gem into a new location
+// swap the position of 2 gems when the player drags the selected gem into a new
+// location
 function swapGemPosition(gem1, gem2) {
 
     var tempPosX = gem1.posX;
@@ -641,7 +651,8 @@ function checkAndKillGemMatches() {
         canKill = true;
     }
 
-    if (! canKill) // there are no matches so swap the gems back to the original positions
+    if (! canKill) // there are no matches so swap the gems back to the
+					// original positions
     {
         var gem = selectedGem;
 
@@ -717,8 +728,7 @@ function checkAllAndKillGemMatches(){
 
 // kill all gems from a starting position to an end position
 function killGemRange(fromX, fromY, toX, toY) {
-
-    fromX = Phaser.Math.clamp(fromX, 0, StartPreferences.BOARD_COLS - 1);
+	fromX = Phaser.Math.clamp(fromX, 0, StartPreferences.BOARD_COLS - 1);
     fromY = Phaser.Math.clamp(fromY , 0, StartPreferences.BOARD_ROWS - 1);
     toX = Phaser.Math.clamp(toX, 0, StartPreferences.BOARD_COLS - 1);
     toY = Phaser.Math.clamp(toY, 0, StartPreferences.BOARD_ROWS - 1);
@@ -727,15 +737,12 @@ function killGemRange(fromX, fromY, toX, toY) {
     {
         for (var j = fromY; j <= toY; j++)
         {
-        	Start.prototype.playAnimations('animBlockMatch', i, j, () => {
-        		
-			});
+        	Start.prototype.playAnimations('animBlockMatch', i, j, function() {});
             var gem = getGem(i, j);
             gem.kill();
             gem = null;
         }
     }
-
 }
 
 // move gems that have been killed off the board
@@ -750,17 +757,17 @@ function removeKilledGems() {
 }
 
 // animated gem movement
-function tweenGemPos(gem, newPosX, newPosY, durationMultiplier) {
+function tweenGemPos(gem, newPosX, newPosY, durationMultiplier, inAfterCallback) {
 
-    console.log('Tween ',gem.name,' from ',gem.posX, ',', gem.posY, ' to ', newPosX, ',', newPosY);
+    //console.log('Tween ',gem.name,' from ',gem.posX, ',', gem.posY, ' to ', newPosX, ',', newPosY);
     if (durationMultiplier === null
 			|| typeof durationMultiplier === 'undefined') {
 		durationMultiplier = 1;
 	}
 
-    return game.add.tween(gem).to({x: (newPosX  * StartPreferences.GEM_SIZE) + StartPreferences.INGAME_UI_LEFT_OFFSET
+    var tween = game.add.tween(gem).to({x: (newPosX  * StartPreferences.GEM_SIZE) + StartPreferences.INGAME_UI_LEFT_OFFSET
     	, y: (newPosY * StartPreferences.GEM_SIZE_SPACED) + StartPreferences.INGAME_UI_TOP_OFFSET}, 150, Phaser.Easing.Linear.None, true);
-
+    return tween; 
 }
 
 // look for gems with empty space beneath them and move them down
@@ -794,7 +801,8 @@ function dropGems() {
 
 }
 
-// look for any empty spots on the board and spawn new gems in their place that fall down from above
+// look for any empty spots on the board and spawn new gems in their place that
+// fall down from above
 function refillBoard() {
 
     var maxGemsMissingFromCol = 0;
