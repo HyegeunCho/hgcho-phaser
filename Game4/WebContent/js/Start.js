@@ -76,18 +76,18 @@ Start.prototype.create = function() {
     
     // used to disable input while gems are dropping down and respawning
 
-	blind = window.game.add.graphics(0,0);
+	blind = this.game.add.graphics(0,0);
 	blind.beginFill(0x000000, 1);
-	blind.drawRect(0, 0, window.game.world.width, window.game.world.height);
+	blind.drawRect(0, 0, this.game.world.width, this.game.world.height);
 	blind.alpha  = 0.7;
 	blind.visible = false;
 	
 	resultPopup = new PopupResult();
-	resultPopup.init(window.game, this);
+	resultPopup.init(this.game, this);
 	
     checkAllAndKillGemMatches();
     
-    window.game.input.addMoveCallback(slideGem, this);
+    this.game.input.addMoveCallback(slideGem, this);
 
     allowInput = true;
 	isPause = false;
@@ -255,19 +255,19 @@ Start.prototype.initUI = function () {
 	this.scene.fMessageTimeOver.alpha = 0 ;
 
 	if (FB_DATA != null) {
-		myProfileImage = window.game.add.image(36, 33, 'myProfileImage');	
+		myProfileImage = this.game.add.image(36, 33, 'myProfileImage');	
 	}
 	
-	scoreText = window.game.add.bitmapText(240, 70, 'textScore', '0', 30);
+	scoreText = this.game.add.bitmapText(240, 70, 'textScore', '0', 30);
 	scoreText.anchor.set(0.5);
 	
-	comboText = window.game.add.bitmapText(420, 125, 'comboFont', '0', 35);
+	comboText = this.game.add.bitmapText(420, 125, 'comboFont', '0', 35);
 	comboText.anchor.set(0.5);
 	
 	this.scene.fImg_Combo.alpha = 0;
 	comboText.alpha = 0;
 	
-	remainTimeText = window.game.add.text(230, 718, StartPreferences.GAME_LIMIT_TIME.toFixed(2), {
+	remainTimeText = this.game.add.text(230, 718, StartPreferences.GAME_LIMIT_TIME.toFixed(2), {
 		fontSize : '18px',
 		fill : '#000'
 	});
