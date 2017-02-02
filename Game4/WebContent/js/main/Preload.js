@@ -27,7 +27,7 @@ Preload.prototype.preload = function() {
 	this.game.load.atlas("BESTSCORE", "assets/start/effect/bestScore.png", "assets/start/effect/bestScore.json", Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 	this.game.load.bitmapFont('comboFont', 'assets/start/font/comboFont.png', 'assets/start/font/comboFont.xml');
 	this.game.load.bitmapFont('textScore', 'assets/start/font/textScoreFont.png', 'assets/start/font/textScoreFont.xml');
-	this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+	//this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 	this.game.load.atlas("TXTTOUCHED", "assets/start/UI/txtTounched.png", "assets/start/UI/txtTounched.json", Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 };
 

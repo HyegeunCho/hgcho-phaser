@@ -31,9 +31,8 @@ init : function(game, start){
 	scoreResultText.anchor.set(0.5);
 	scoreResultText.visible = false;
 	
-	maxText = game.add.text(200, 490, "- phaser -\nrocking with\ngoogle web fonts");
+	maxText = game.add.text(200, 490);
 	maxText.anchor.setTo(0.5);
-	maxText.font = 'Revalia';
 	maxText.fontSize = 30;
   
 	maxText.strokeThickness = 2;
